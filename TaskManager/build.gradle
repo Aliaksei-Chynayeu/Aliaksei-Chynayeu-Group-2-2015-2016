@@ -4,8 +4,10 @@ apply plugin: 'eclipse'
 apply plugin: 'checkstyle'
 apply plugin: 'jacoco'
 apply plugin: 'findbugs'
+apply plugin: 'sonar'
+apply plugin: 'sonar-runner'
 
-sourceCompatibility = 1.6
+sourceCompatibility = 1.8
 
 mainClassName = "com.epam.jmp.taskmanager.run.App"
 repositories {
@@ -19,7 +21,12 @@ dependencies {
     compile 'com.puppycrawl.tools:checkstyle:6.15'
 }
 
-
+jar {
+	from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+	manifest {
+		attributes 'Main-Class': 'com.epam.jmp.taskmanager.run.App'
+	}
+}
 
 tasks.withType(Checkstyle) {
     configFile = rootProject.file("config/checkstyle/sun.xml");
@@ -43,38 +50,49 @@ tasks.withType(FindBugs) {
     }
  }
 
-jacocoTestReport {
+test {
     reports {
-        xml {
-            enabled true // coveralls plugin depends on xml format report
-        }
+        junitXml.enabled = false
+        html.enabled = true
+        html.destination rootProject.file("reports/passRates")
+    }  
+    
+}
 
-        html {
-            enabled true
-        }
-    }
+sonar {
+	server {
+	    url = "http://sonar.someserver.int"
+	}
+	database {
+	    url = "jdbc:mysql://sonar.someserver.int:3306/sonar"
+	    driverClassName = "com.mysql.jdbc.Driver"
+	    username = "admin"
+	    password = "admin"
+	}
+}
 
-    test {
+sonarRunner {
+	sonarProperties {
+	    property "sonar.host.url", "http://sonar.someserver.int"
+	    property "sonar.jdbc.url", "jdbc:mysql://sonar.someserver.int:3306/sonar"
+	    property "sonar.jdbc.driverClassName", "com.mysql.jdbc.Driver"
+	    property "sonar.jdbc.username", "admin"
+	    property "sonar.jdbc.password", "admin"
+
+	    //added these properties to my gradle.build
+	    property "sonar.projectKey", "GradleAndroidTest"
+	    property "sonar.projectName", "GradleAndroidTest"
+	    property "sonar.projectVersion", "V1.0"
+	    property "sonar.language", "java"
+	    property "sonar.sources", "src"
+	    property "sonar.binaries", "build"
+	}
+}
+
+test {
         jacoco {
         
             destinationFile = file("reports/jacoco/jacocoTest.exec")
           
         }
-    }
-}
-tasks.withType(JacocoReport) {
-    dependsOn test
-    description = "Generate Jacoco coverage reports after running tests."
-    reports {
-        xml.enabled false
-        html.enabled true
-        html.destination rootProject.file("/reports/jacoco/jacoco.html")
-    }
-}
-
-jar {
-	from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
-    manifest {
-     	attributes 'Main-Class': 'com.epam.jmp.taskmanager.run.App'
-    }
 }
