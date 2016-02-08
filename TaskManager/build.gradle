@@ -58,8 +58,7 @@ jacocoTestReport {
         jacoco {
         
             destinationFile = file("reports/jacoco/jacocoTest.exec")
-            excludes = ["projecteuler/**"] // <-- does not work
-            // excludes = ["projecteuler"]
+          
         }
     }
 }
