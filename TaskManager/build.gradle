@@ -1,17 +1,81 @@
 apply plugin: 'java'
 apply plugin: 'application'
 apply plugin: 'eclipse'
-
+apply plugin: 'checkstyle'
+apply plugin: 'jacoco'
+apply plugin: 'findbugs'
 
 sourceCompatibility = 1.6
-version = '1.0'
+
+mainClassName = "com.epam.jmp.taskmanager.run.App"
+repositories {
+    mavenCentral()
+    
+}
+
+
+dependencies {
+    compile fileTree(dir: './src/main/resources/libs', include: ['*.jar'])
+    compile 'com.puppycrawl.tools:checkstyle:6.15'
+}
+
+
+
+tasks.withType(Checkstyle) {
+    configFile = rootProject.file("config/checkstyle/sun.xml");
+    ignoreFailures = true
+  	reports {
+  		xml.enabled = true
+    	xml.destination rootProject.file("reports/checkstyle/checkstyle.xml")
+  	}
+}
+tasks.withType(FindBugs) {
+	ignoreFailures = true
+	effort = "max"
+	reportLevel = "medium"
+    classes = files("$project.buildDir/classes")
+    source = fileTree(dir: 'src', include: '**/*.java')
+    classpath = files() 
+    reports {
+        xml.enabled = false
+        html.enabled = true
+        html.destination rootProject.file("/reports/findbugs/findbugs.html")
+    }
+ }
+
+jacocoTestReport {
+    reports {
+        xml {
+            enabled true // coveralls plugin depends on xml format report
+        }
+
+        html {
+            enabled true
+        }
+    }
+
+    test {
+        jacoco {
+        
+            destinationFile = file("reports/jacoco/jacocoTest.exec")
+            excludes = ["projecteuler/**"] // <-- does not work
+            // excludes = ["projecteuler"]
+        }
+    }
+}
+tasks.withType(JacocoReport) {
+    dependsOn test
+    description = "Generate Jacoco coverage reports after running tests."
+    reports {
+        xml.enabled false
+        html.enabled true
+        html.destination rootProject.file("/reports/jacoco/jacoco.html")
+    }
+}
+
 jar {
 	from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
     manifest {
      	attributes 'Main-Class': 'com.epam.jmp.taskmanager.run.App'
     }
-}
-
-dependencies {
-    compile fileTree(dir: './src/main/resources/libs', include: ['*.jar'])
 }

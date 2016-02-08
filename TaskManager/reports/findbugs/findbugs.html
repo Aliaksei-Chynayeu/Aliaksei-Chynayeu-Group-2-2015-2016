@@ -1,0 +1,505 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>FindBugs Report</title>
+<style type="text/css">
+		.tablerow0 {
+			background: #EEEEEE;
+		}
+
+		.tablerow1 {
+			background: white;
+		}
+
+		.detailrow0 {
+			background: #EEEEEE;
+		}
+
+		.detailrow1 {
+			background: white;
+		}
+
+		.tableheader {
+			background: #b9b9fe;
+			font-size: larger;
+		}
+
+		.tablerow0:hover, .tablerow1:hover {
+			background: #aaffaa;
+		}
+
+		.priority-1 {
+		    color: red;
+		    font-weight: bold;
+		}
+		.priority-2 {
+		    color: orange;
+		    font-weight: bold;
+		}
+		.priority-3 {
+		    color: green;
+		    font-weight: bold;
+		}
+		.priority-4 {
+		    color: blue;
+		    font-weight: bold;
+		}
+		</style>
+<script type="text/javascript">
+			function toggleRow(elid) {
+				if (document.getElementById) {
+					element = document.getElementById(elid);
+					if (element) {
+						if (element.style.display == 'none') {
+							element.style.display = 'block';
+							//window.status = 'Toggle on!';
+						} else {
+							element.style.display = 'none';
+							//window.status = 'Toggle off!';
+						}
+					}
+				}
+			}
+		</script>
+</head>
+<body>
+<h1>
+<a href="http://findbugs.sourceforge.net">FindBugs</a> Report</h1>
+<h2>Project Information</h2>
+<p>Project: 
+		</p>
+<p>FindBugs version: 3.0.1</p>
+<p>Code analyzed:</p>
+<ul>
+<li>D:\trainings\jmp2015-2016\workspace\TaskManager\build\classes</li>
+</ul>
+<p>
+<br/>
+<br/>
+</p>
+<h2>Metrics</h2>
+<p>736 lines of code analyzed,
+	in 25 classes, 
+	in 7 packages.</p>
+<table width="500" cellpadding="5" cellspacing="2">
+<tr class="tableheader">
+<th align="left">Metric</th>
+<th align="right">Total</th>
+<th align="right">Density*</th>
+</tr>
+<tr class="tablerow0">
+<td>High Priority Warnings</td>
+<td align="right">6</td>
+<td align="right">8.15</td>
+</tr>
+<tr class="tablerow1">
+<td>Medium Priority Warnings</td>
+<td align="right">6</td>
+<td align="right">8.15</td>
+</tr>
+<tr class="$totalClass">
+<td>
+<b>Total Warnings</b>
+</td>
+<td align="right">
+<b>12</b>
+</td>
+<td align="right">
+<b>16.30</b>
+</td>
+</tr>
+</table>
+<p>
+<i>(* Defects per Thousand lines of non-commenting source statements)</i>
+</p>
+<p>
+<br/>
+<br/>
+</p>
+<h2>Contents</h2>
+<ul>
+<li>
+<a href="#Warnings_BAD_PRACTICE">Bad practice Warnings</a>
+</li>
+<li>
+<a href="#Warnings_CORRECTNESS">Correctness Warnings</a>
+</li>
+<li>
+<a href="#Warnings_I18N">Internationalization Warnings</a>
+</li>
+<li>
+<a href="#Warnings_MALICIOUS_CODE">Malicious code vulnerability Warnings</a>
+</li>
+<li>
+<a href="#Warnings_MT_CORRECTNESS">Multithreaded correctness Warnings</a>
+</li>
+<li>
+<a href="#Warnings_STYLE">Dodgy code Warnings</a>
+</li>
+<li>
+<a href="#Details">Details</a>
+</li>
+</ul>
+<h1>Summary</h1>
+<table width="500" cellpadding="5" cellspacing="2">
+<tr class="tableheader">
+<th align="left">Warning Type</th>
+<th align="right">Number</th>
+</tr>
+<tr class="tablerow0">
+<td>
+<a href="#Warnings_BAD_PRACTICE">Bad practice Warnings</a>
+</td>
+<td align="right">1</td>
+</tr>
+<tr class="tablerow1">
+<td>
+<a href="#Warnings_CORRECTNESS">Correctness Warnings</a>
+</td>
+<td align="right">3</td>
+</tr>
+<tr class="tablerow0">
+<td>
+<a href="#Warnings_I18N">Internationalization Warnings</a>
+</td>
+<td align="right">3</td>
+</tr>
+<tr class="tablerow1">
+<td>
+<a href="#Warnings_MALICIOUS_CODE">Malicious code vulnerability Warnings</a>
+</td>
+<td align="right">1</td>
+</tr>
+<tr class="tablerow0">
+<td>
+<a href="#Warnings_MT_CORRECTNESS">Multithreaded correctness Warnings</a>
+</td>
+<td align="right">2</td>
+</tr>
+<tr class="tablerow1">
+<td>
+<a href="#Warnings_STYLE">Dodgy code Warnings</a>
+</td>
+<td align="right">2</td>
+</tr>
+<tr class="tablerow0">
+<td>
+<b>Total</b>
+</td>
+<td align="right">
+<b>12</b>
+</td>
+</tr>
+</table>
+<h1>Warnings</h1>
+<p>Click on a warning row to see full context information.</p>
+<h2>
+<a name="Warnings_BAD_PRACTICE">Bad practice Warnings</a>
+</h2>
+<table class="warningtable" width="100%" cellspacing="0">
+<tr class="tableheader">
+<th align="left">Code</th>
+<th align="left">Warning</th>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N66315');">
+<td>
+<span class="priority-1">DMI</span>
+</td>
+<td>Random object created and used only once in com.epam.jmp.taskmanager.util.TaskStoreGenearator.generate()</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N66315" style="display: none;">
+<a href="#DMI_RANDOM_USED_ONLY_ONCE">Bug type DMI_RANDOM_USED_ONLY_ONCE (click for details)</a>
+<br/>In class com.epam.jmp.taskmanager.util.TaskStoreGenearator<br/>In method com.epam.jmp.taskmanager.util.TaskStoreGenearator.generate()<br/>Called method java.util.Random.nextLong()<br/>At TaskStoreGenearator.java:[line 38]<br/>Another occurrence at TaskStoreGenearator.java:[line 43]<br/>Another occurrence at TaskStoreGenearator.java:[line 48]<br/>Another occurrence at TaskStoreGenearator.java:[line 53]<br/>Another occurrence at TaskStoreGenearator.java:[line 58]<br/>Another occurrence at TaskStoreGenearator.java:[line 65]<br/>Another occurrence at TaskStoreGenearator.java:[line 71]<br/>Another occurrence at TaskStoreGenearator.java:[line 76]</p>
+</td>
+</tr>
+</table>
+<h2>
+<a name="Warnings_CORRECTNESS">Correctness Warnings</a>
+</h2>
+<table class="warningtable" width="100%" cellspacing="0">
+<tr class="tableheader">
+<th align="left">Code</th>
+<th align="left">Warning</th>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N65598');">
+<td>
+<span class="priority-2">NP</span>
+</td>
+<td>Possible null pointer dereference of sw in com.epam.jmp.taskmanager.data.dao.FileDAO.writeToFile(TaskStore) on exception path</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N65598" style="display: none;">
+<a href="#NP_NULL_ON_SOME_PATH_EXCEPTION">Bug type NP_NULL_ON_SOME_PATH_EXCEPTION (click for details)</a>
+<br/>In class com.epam.jmp.taskmanager.data.dao.FileDAO<br/>In method com.epam.jmp.taskmanager.data.dao.FileDAO.writeToFile(TaskStore)<br/>Value loaded from sw<br/>Dereferenced at FileDAO.java:[line 40]<br/>Null value at FileDAO.java:[line 32]<br/>Known null at FileDAO.java:[line 34]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N66222');">
+<td>
+<span class="priority-2">NP</span>
+</td>
+<td>Possible null pointer dereference of fw in com.epam.jmp.taskmanager.util.FileUtil.writeToFile(StringWriter, File) on exception path</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N66222" style="display: none;">
+<a href="#NP_NULL_ON_SOME_PATH_EXCEPTION">Bug type NP_NULL_ON_SOME_PATH_EXCEPTION (click for details)</a>
+<br/>In class com.epam.jmp.taskmanager.util.FileUtil<br/>In method com.epam.jmp.taskmanager.util.FileUtil.writeToFile(StringWriter, File)<br/>Value loaded from fw<br/>Dereferenced at FileUtil.java:[line 42]<br/>Null value at FileUtil.java:[line 34]<br/>Known null at FileUtil.java:[line 36]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N66462');">
+<td>
+<span class="priority-1">RV</span>
+</td>
+<td>Bad attempt to compute absolute value of signed random integer in com.epam.jmp.taskmanager.util.TaskStoreGenearator.generate()</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N66462" style="display: none;">
+<a href="#RV_ABSOLUTE_VALUE_OF_RANDOM_INT">Bug type RV_ABSOLUTE_VALUE_OF_RANDOM_INT (click for details)</a>
+<br/>In class com.epam.jmp.taskmanager.util.TaskStoreGenearator<br/>In method com.epam.jmp.taskmanager.util.TaskStoreGenearator.generate()<br/>At TaskStoreGenearator.java:[line 38]<br/>Another occurrence at TaskStoreGenearator.java:[line 43]<br/>Another occurrence at TaskStoreGenearator.java:[line 48]<br/>Another occurrence at TaskStoreGenearator.java:[line 53]<br/>Another occurrence at TaskStoreGenearator.java:[line 58]<br/>Another occurrence at TaskStoreGenearator.java:[line 65]<br/>Another occurrence at TaskStoreGenearator.java:[line 71]<br/>Another occurrence at TaskStoreGenearator.java:[line 76]</p>
+</td>
+</tr>
+</table>
+<h2>
+<a name="Warnings_I18N">Internationalization Warnings</a>
+</h2>
+<table class="warningtable" width="100%" cellspacing="0">
+<tr class="tableheader">
+<th align="left">Code</th>
+<th align="left">Warning</th>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N66015');">
+<td>
+<span class="priority-1">Dm</span>
+</td>
+<td>Found reliance on default encoding in com.epam.jmp.taskmanager.run.App.main(String[]): new java.util.Scanner(InputStream)</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N66015" style="display: none;">
+<a href="#DM_DEFAULT_ENCODING">Bug type DM_DEFAULT_ENCODING (click for details)</a>
+<br/>In class com.epam.jmp.taskmanager.run.App<br/>In method com.epam.jmp.taskmanager.run.App.main(String[])<br/>Called method new java.util.Scanner(InputStream)<br/>At App.java:[line 31]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N66084');">
+<td>
+<span class="priority-1">Dm</span>
+</td>
+<td>Found reliance on default encoding in com.epam.jmp.taskmanager.util.FileUtil.readFormFile(File): new java.util.Scanner(File)</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N66084" style="display: none;">
+<a href="#DM_DEFAULT_ENCODING">Bug type DM_DEFAULT_ENCODING (click for details)</a>
+<br/>In class com.epam.jmp.taskmanager.util.FileUtil<br/>In method com.epam.jmp.taskmanager.util.FileUtil.readFormFile(File)<br/>Called method new java.util.Scanner(File)<br/>At FileUtil.java:[line 60]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N66153');">
+<td>
+<span class="priority-1">Dm</span>
+</td>
+<td>Found reliance on default encoding in com.epam.jmp.taskmanager.util.FileUtil.writeToFile(StringWriter, File): new java.io.FileWriter(File)</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N66153" style="display: none;">
+<a href="#DM_DEFAULT_ENCODING">Bug type DM_DEFAULT_ENCODING (click for details)</a>
+<br/>In class com.epam.jmp.taskmanager.util.FileUtil<br/>In method com.epam.jmp.taskmanager.util.FileUtil.writeToFile(StringWriter, File)<br/>Called method new java.io.FileWriter(File)<br/>At FileUtil.java:[line 36]</p>
+</td>
+</tr>
+</table>
+<h2>
+<a name="Warnings_MALICIOUS_CODE">Malicious code vulnerability Warnings</a>
+</h2>
+<table class="warningtable" width="100%" cellspacing="0">
+<tr class="tableheader">
+<th align="left">Code</th>
+<th align="left">Warning</th>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N65691');">
+<td>
+<span class="priority-1">MS</span>
+</td>
+<td>com.epam.jmp.taskmanager.data.pool.AbstractPool.isConnected isn't final but should be</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N65691" style="display: none;">
+<a href="#MS_SHOULD_BE_FINAL">Bug type MS_SHOULD_BE_FINAL (click for details)</a>
+<br/>In class com.epam.jmp.taskmanager.data.pool.AbstractPool<br/>Field com.epam.jmp.taskmanager.data.pool.AbstractPool.isConnected<br/>At AbstractPool.java:[line 42]</p>
+</td>
+</tr>
+</table>
+<h2>
+<a name="Warnings_MT_CORRECTNESS">Multithreaded correctness Warnings</a>
+</h2>
+<table class="warningtable" width="100%" cellspacing="0">
+<tr class="tableheader">
+<th align="left">Code</th>
+<th align="left">Warning</th>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N65743');">
+<td>
+<span class="priority-2">LI</span>
+</td>
+<td>Incorrect lazy initialization of static field com.epam.jmp.taskmanager.data.pool.ConnectionPool.instance in com.epam.jmp.taskmanager.data.pool.ConnectionPool.closePool()</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N65743" style="display: none;">
+<a href="#LI_LAZY_INIT_STATIC">Bug type LI_LAZY_INIT_STATIC (click for details)</a>
+<br/>In class com.epam.jmp.taskmanager.data.pool.ConnectionPool<br/>In method com.epam.jmp.taskmanager.data.pool.ConnectionPool.closePool()<br/>On field com.epam.jmp.taskmanager.data.pool.ConnectionPool.instance<br/>At ConnectionPool.java:[lines 82-88]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N65879');">
+<td>
+<span class="priority-2">LI</span>
+</td>
+<td>Incorrect lazy initialization of static field com.epam.jmp.taskmanager.data.pool.FilePool.instance in com.epam.jmp.taskmanager.data.pool.FilePool.closePool()</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N65879" style="display: none;">
+<a href="#LI_LAZY_INIT_STATIC">Bug type LI_LAZY_INIT_STATIC (click for details)</a>
+<br/>In class com.epam.jmp.taskmanager.data.pool.FilePool<br/>In method com.epam.jmp.taskmanager.data.pool.FilePool.closePool()<br/>On field com.epam.jmp.taskmanager.data.pool.FilePool.instance<br/>At FilePool.java:[lines 81-87]</p>
+</td>
+</tr>
+</table>
+<h2>
+<a name="Warnings_STYLE">Dodgy code Warnings</a>
+</h2>
+<table class="warningtable" width="100%" cellspacing="0">
+<tr class="tableheader">
+<th align="left">Code</th>
+<th align="left">Warning</th>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N65812');">
+<td>
+<span class="priority-2">ST</span>
+</td>
+<td>Write to static field com.epam.jmp.taskmanager.data.pool.ConnectionPool.instance from instance method com.epam.jmp.taskmanager.data.pool.ConnectionPool.closePool()</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N65812" style="display: none;">
+<a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+<br/>In class com.epam.jmp.taskmanager.data.pool.ConnectionPool<br/>In method com.epam.jmp.taskmanager.data.pool.ConnectionPool.closePool()<br/>Field com.epam.jmp.taskmanager.data.pool.ConnectionPool.instance<br/>At ConnectionPool.java:[line 88]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N65948');">
+<td>
+<span class="priority-2">ST</span>
+</td>
+<td>Write to static field com.epam.jmp.taskmanager.data.pool.FilePool.instance from instance method com.epam.jmp.taskmanager.data.pool.FilePool.closePool()</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N65948" style="display: none;">
+<a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+<br/>In class com.epam.jmp.taskmanager.data.pool.FilePool<br/>In method com.epam.jmp.taskmanager.data.pool.FilePool.closePool()<br/>Field com.epam.jmp.taskmanager.data.pool.FilePool.instance<br/>At FilePool.java:[line 87]</p>
+</td>
+</tr>
+</table>
+<h1>
+<a name="Details">Details</a>
+</h1>
+<h2>
+<a name="DM_DEFAULT_ENCODING">DM_DEFAULT_ENCODING: Reliance on default encoding</a>
+</h2>
+
+<p> Found a call to a method which will perform a byte to String (or String to byte) conversion, and will assume that the default platform encoding is suitable. This will cause the application behaviour to vary between platforms. Use an alternative API and specify a charset name or Charset object explicitly.  </p>
+
+      
+<h2>
+<a name="DMI_RANDOM_USED_ONLY_ONCE">DMI_RANDOM_USED_ONLY_ONCE: Random object created and used only once</a>
+</h2>
+
+<p> This code creates a java.util.Random object, uses it to generate one random number, and then discards
+the Random object. This produces mediocre quality random numbers and is inefficient.
+If possible, rewrite the code so that the Random object is created once and saved, and each time a new random number
+is required invoke a method on the existing Random object to obtain it.
+</p>
+
+<p>If it is important that the generated Random numbers not be guessable, you <em>must</em> not create a new Random for each random
+number; the values are too easily guessable. You should strongly consider using a java.security.SecureRandom instead
+(and avoid allocating a new SecureRandom for each random number needed).
+</p>
+
+    
+<h2>
+<a name="LI_LAZY_INIT_STATIC">LI_LAZY_INIT_STATIC: Incorrect lazy initialization of static field</a>
+</h2>
+
+<p> This method contains an unsynchronized lazy initialization of a non-volatile static field.
+Because the compiler or processor may reorder instructions,
+threads are not guaranteed to see a completely initialized object,
+<em>if the method can be called by multiple threads</em>.
+You can make the field volatile to correct the problem.
+For more information, see the
+<a href="http://www.cs.umd.edu/~pugh/java/memoryModel/">Java Memory Model web site</a>.
+</p>
+
+    
+<h2>
+<a name="MS_SHOULD_BE_FINAL">MS_SHOULD_BE_FINAL: Field isn't final but should be</a>
+</h2>
+
+   <p>
+This static field public but not final, and
+could be changed by malicious code or
+        by accident from another package.
+        The field could be made final to avoid
+        this vulnerability.</p>
+
+    
+<h2>
+<a name="NP_NULL_ON_SOME_PATH_EXCEPTION">NP_NULL_ON_SOME_PATH_EXCEPTION: Possible null pointer dereference in method on exception path</a>
+</h2>
+
+<p> A reference value which is null on some exception control path is
+dereferenced here.&nbsp; This may lead to a <code>NullPointerException</code>
+when the code is executed.&nbsp;
+Note that because FindBugs currently does not prune infeasible exception paths,
+this may be a false warning.</p>
+
+<p> Also note that FindBugs considers the default case of a switch statement to
+be an exception path, since the default case is often infeasible.</p>
+
+    
+<h2>
+<a name="RV_ABSOLUTE_VALUE_OF_RANDOM_INT">RV_ABSOLUTE_VALUE_OF_RANDOM_INT: Bad attempt to compute absolute value of signed random integer</a>
+</h2>
+
+<p> This code generates a random signed integer and then computes
+the absolute value of that random integer.  If the number returned by the random number
+generator is <code>Integer.MIN_VALUE</code>, then the result will be negative as well (since
+<code>Math.abs(Integer.MIN_VALUE) == Integer.MIN_VALUE</code>). (Same problem arised for long values as well).
+</p>
+
+    
+<h2>
+<a name="ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD: Write to static field from instance method</a>
+</h2>
+
+  <p> This instance method writes to a static field. This is tricky to get
+correct if multiple instances are being manipulated,
+and generally bad practice.
+</p>
+
+    </body>
+</html>

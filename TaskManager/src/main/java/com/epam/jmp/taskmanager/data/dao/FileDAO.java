@@ -13,29 +13,6 @@ import com.epam.jmp.taskmanager.util.JAXBUtil;
 
 public class FileDAO extends AbstractDAO<TaskStore, File> {
 
-	@Override
-	public List<TaskStore> getList() throws TechnicalDAOException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public TaskStore fetchById(long obj) throws TechnicalDAOException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void save(TaskStore obj) throws TechnicalDAOException {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void remove(Long... ids) throws TechnicalDAOException {
-		// TODO Auto-generated method stub
-
-	}
 
 	public TaskStore readFromFromFile() throws TechnicalDAOException {
 		File file = this.getConnection();
@@ -66,5 +43,25 @@ public class FileDAO extends AbstractDAO<TaskStore, File> {
 			}
 			this.releaseConnection(file);
 		}
+	}
+
+	public List<TaskStore> getList() throws TechnicalDAOException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public TaskStore fetchById(long obj) throws TechnicalDAOException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void save(TaskStore obj) throws TechnicalDAOException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void remove(Long... ids) throws TechnicalDAOException {
+		// TODO Auto-generated method stub
+		
 	}
 }
