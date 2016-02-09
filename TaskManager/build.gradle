@@ -60,19 +60,6 @@ test {
 	} 
 } 
 
-jacocoTestReport { 
-	 reports { 
-		 xml.enabled false 
-		 csv.enabled false 
-		 html.enabled true 
-		 html.destination "${buildDir}/jacocoHtml" 
-	 } 
-		 test { 
-			jacoco { 
-				destinationFile = file("reports/jacoco/jacocoTest.exec") 
-			} 
-		 } 
-} 
 
 task appJacocoTestReport(type: JacocoReport, dependsOn: test) {
 	reports { 
