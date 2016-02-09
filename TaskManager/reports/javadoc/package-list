@@ -1,0 +1,7 @@
+com.epam.jmp.taskmanager.data.dao
+com.epam.jmp.taskmanager.data.pool
+com.epam.jmp.taskmanager.exception
+com.epam.jmp.taskmanager.model
+com.epam.jmp.taskmanager.run
+com.epam.jmp.taskmanager.util
+com.epam.jmp.taskmanager.util.thread

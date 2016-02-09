@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>FilePool.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">TaskManager</a> &gt; <a href="index.source.html" class="el_package">com.epam.jmp.taskmanager.data.pool</a> &gt; <span class="el_source">FilePool.java</span></div><h1>FilePool.java</h1><pre class="source lang-java linenums">package com.epam.jmp.taskmanager.data.pool;
+
+import java.io.File;
+import java.util.concurrent.ArrayBlockingQueue;
+
+import org.apache.log4j.Logger;
+
+import com.epam.jmp.taskmanager.exception.ConnectionPoolException;
+
+/**
+ * Class return, create connection, release, clear all connections. Singleton.
+ * 
+ * @author Aliaksei_Hlazkou
+ */
+public final class FilePool extends AbstractPool&lt;File&gt; {
+
+	/**
+	 * logger
+	 */
+<span class="nc" id="L20">	private static final Logger LOG = Logger.getLogger(FilePool.class);</span>
+	/**
+	 * instance of the connection pool.
+	 */
+<span class="nc" id="L24">	private static FilePool instance = null;</span>
+	
+	/** file pool size */
+	public static final int FILE_POOL_SIZE = 1;
+
+<span class="nc" id="L29">	private FilePool() {</span>
+<span class="nc" id="L30">	}</span>
+
+	/**
+	 * Return the instanse of the connectionPooL class
+	 * 
+	 * @return instance og thie ConnectionPool class
+	 * @throws RuntimeException
+	 *             if there are any problems with connection
+	 */
+	public static FilePool getInstance() throws RuntimeException {
+<span class="nc bnc" id="L40" title="All 2 branches missed.">		if (isConnected.get()) {</span>
+<span class="nc bnc" id="L41" title="All 2 branches missed.">			if (instance == null) {</span>
+<span class="nc" id="L42">				LOCK.lock();</span>
+				try {
+<span class="nc bnc" id="L44" title="All 2 branches missed.">					if (instance == null) {</span>
+<span class="nc" id="L45">						instance = new FilePool();</span>
+					}
+				} finally {
+<span class="nc" id="L48">					LOCK.unlock();</span>
+<span class="nc" id="L49">				}</span>
+			}
+		}
+<span class="nc" id="L52">		return instance;</span>
+
+	}
+
+	/**
+	 * Initialization of the File pool class
+	 * 
+	 * @throws ConnectionPoolException
+	 *             in case of problems width connection or driver
+	 */
+	public void initPool() throws ConnectionPoolException {
+		try {
+			
+<span class="nc" id="L65">			freeConnections = new ArrayBlockingQueue&lt;File&gt;(getPoolSize());</span>
+<span class="nc" id="L66">			busyConnections = new ArrayBlockingQueue&lt;File&gt;(getPoolSize());</span>
+<span class="nc bnc" id="L67" title="All 2 branches missed.">			for (int i = 0; i &lt; getPoolSize(); i++) {</span>
+<span class="nc" id="L68">				freeConnections.add(new File(this.getUrl()));</span>
+			}
+<span class="nc" id="L70">		} catch (Exception e) {</span>
+<span class="nc" id="L71">			throw new ConnectionPoolException(&quot;Connection is wrong&quot;, e);</span>
+<span class="nc" id="L72">		}</span>
+<span class="nc" id="L73">	}</span>
+
+
+	/**
+	 * Close ConnectionPool
+	 */
+	public void closePool() {
+<span class="nc" id="L80">		isConnected.set(Boolean.FALSE);</span>
+<span class="nc bnc" id="L81" title="All 2 branches missed.">		if (instance != null) {</span>
+			try {
+<span class="nc" id="L83">				instance.clearConnectionQueue();</span>
+<span class="nc" id="L84">			} catch (ConnectionPoolException ex) {</span>
+<span class="nc" id="L85">				LOG.warn(&quot;Can't close connection pool&quot;, ex);</span>
+<span class="nc" id="L86">			}</span>
+<span class="nc" id="L87">			instance = null;</span>
+		}
+<span class="nc" id="L89">	}</span>
+	/**
+	 * Clear all connections
+	 * NOTE: Do not use it manually!
+	 * @throws ConnectionPoolException
+	 *             in case of problem with clear all connection
+	 */
+	private void clearConnectionQueue() throws ConnectionPoolException {
+		try {
+			File file;
+<span class="nc bnc" id="L99" title="All 2 branches missed.">			while ((file = freeConnections.poll()) != null) {</span>
+<span class="nc" id="L100">				file = null;</span>
+			}
+<span class="nc bnc" id="L102" title="All 2 branches missed.">			while ((file = busyConnections.poll()) != null) {</span>
+<span class="nc" id="L103">				file = null;</span>
+			}
+<span class="nc" id="L105">		} catch (Exception e) {</span>
+<span class="nc" id="L106">			throw new ConnectionPoolException(</span>
+					&quot;Can't clear all pool connections&quot;, e);
+<span class="nc" id="L108">		}</span>
+<span class="nc" id="L109">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>

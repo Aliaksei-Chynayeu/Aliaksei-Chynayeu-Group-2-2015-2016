@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>TaskStore.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">TaskManager</a> &gt; <a href="index.source.html" class="el_package">com.epam.jmp.taskmanager.model</a> &gt; <span class="el_source">TaskStore.java</span></div><h1>TaskStore.java</h1><pre class="source lang-java linenums">package com.epam.jmp.taskmanager.model;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
+import javax.xml.bind.annotation.XmlRootElement;
+
+/**
+ * Task store model for storing files in XML
+ * 
+ * @author Aliaksei_hlazkou
+ * 
+ */
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
+<span class="nc" id="L22">public class TaskStore implements Serializable{</span>
+
+	/** serialVersionUID */
+	private static final long serialVersionUID = -1470323951290290306L;
+	/** tasks list */
+<span class="nc" id="L27">	@XmlElementWrapper(name=&quot;lists&quot;)</span>
+    @XmlElement(name=&quot;list&quot;)
+	List&lt;TaskList&gt; taskList = new ArrayList&lt;TaskList&gt;();
+	/** id */
+	@XmlAttribute
+	private long id;
+	/**
+	 * Getter for id filed
+	 */
+	public long getId() {
+<span class="nc" id="L37">		return id;</span>
+	}
+
+	/**
+	 * Setter for id field
+	 * 
+	 * @param id
+	 *            the id to set
+	 */
+	public void setId(long id) {
+<span class="nc" id="L47">		this.id = id;</span>
+<span class="nc" id="L48">	}</span>
+	/**
+	 * Getter for taskList field
+	 * 
+	 * @return the taskList
+	 */
+	public List&lt;TaskList&gt; getTaskList() {
+<span class="nc" id="L55">		return taskList;</span>
+	}
+
+	/**
+	 * Setter for taskList field
+	 * 
+	 * @param taskList
+	 *            the taskList to set
+	 */
+	public void setTaskList(List&lt;TaskList&gt; taskList) {
+<span class="nc" id="L65">		this.taskList = taskList;</span>
+<span class="nc" id="L66">	}</span>
+
+	@Override
+	public String toString() {
+<span class="nc" id="L70">		return &quot;TaskStore [taskList=&quot; + taskList + &quot;, id=&quot; + id + &quot;]&quot;;</span>
+	}
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>ConnectionPool.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">TaskManager</a> &gt; <a href="index.source.html" class="el_package">com.epam.jmp.taskmanager.data.pool</a> &gt; <span class="el_source">ConnectionPool.java</span></div><h1>ConnectionPool.java</h1><pre class="source lang-java linenums">package com.epam.jmp.taskmanager.data.pool;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.concurrent.ArrayBlockingQueue;
+
+import org.apache.log4j.Logger;
+
+import com.epam.jmp.taskmanager.exception.ConnectionPoolException;
+
+/**
+ * Class return, create connection, release, clear all connections. Singleton.
+ *
+ * @author Aliaksei_Hlazkou
+ */
+public final class ConnectionPool extends AbstractPool&lt;Connection&gt;{
+
+    /**
+     * logger
+     */
+<span class="nc" id="L22">    private static final Logger LOG = Logger.getLogger(ConnectionPool.class);</span>
+    /**
+     * instance of the connection pool.
+     */
+<span class="nc" id="L26">    private static ConnectionPool instance = null;</span>
+
+    
+<span class="nc" id="L29">    private ConnectionPool() {</span>
+<span class="nc" id="L30">    }</span>
+
+    /**
+     * Return the instanse of the connectionPooL class
+     *
+     * @return instance og thie ConnectionPool class
+     * @throws RuntimeException if there are any problems with connection
+     */
+    public static ConnectionPool getInstance() throws RuntimeException {
+<span class="nc bnc" id="L39" title="All 2 branches missed.">        if (isConnected.get()) {</span>
+<span class="nc bnc" id="L40" title="All 2 branches missed.">            if (instance == null) {</span>
+<span class="nc" id="L41">                LOCK.lock();</span>
+                try {
+<span class="nc bnc" id="L43" title="All 2 branches missed.">                    if (instance == null) {</span>
+<span class="nc" id="L44">                        instance = new ConnectionPool();</span>
+                    }
+                } finally {
+<span class="nc" id="L47">                    LOCK.unlock();</span>
+<span class="nc" id="L48">                }</span>
+            }
+        }
+<span class="nc" id="L51">        return instance;</span>
+
+    }
+
+    /**
+     * Initialization of the ConnectionPool class
+     *
+     * @throws ConnectionPoolException in case of problems width connection or
+     * driver
+     */
+    public void initPool() throws ConnectionPoolException {
+        try {
+<span class="nc" id="L63">            Class.forName(getDriver());</span>
+<span class="nc" id="L64">            freeConnections = new ArrayBlockingQueue&lt;Connection&gt;(getPoolSize());</span>
+<span class="nc" id="L65">            busyConnections = new ArrayBlockingQueue&lt;Connection&gt;(getPoolSize());</span>
+<span class="nc bnc" id="L66" title="All 2 branches missed.">            for (int i = 0; i &lt; getPoolSize(); i++) {</span>
+<span class="nc" id="L67">                Connection connection = DriverManager.getConnection(getUrl(), getUser(), getPassword());</span>
+<span class="nc" id="L68">                freeConnections.add(connection);</span>
+            }
+<span class="nc" id="L70">        } catch (ClassNotFoundException e) {</span>
+<span class="nc" id="L71">            throw new ConnectionPoolException(&quot;Driver  is wrong&quot;, e);</span>
+<span class="nc" id="L72">        } catch (SQLException e) {</span>
+<span class="nc" id="L73">            throw new ConnectionPoolException(&quot;Connection is wrong&quot;, e);</span>
+<span class="nc" id="L74">        }</span>
+<span class="nc" id="L75">    }</span>
+
+    /**
+     * Close ConnectionPool
+     */
+    public void closePool() {
+<span class="nc" id="L81">        isConnected.set(Boolean.FALSE);</span>
+<span class="nc bnc" id="L82" title="All 2 branches missed.">        if (instance != null) {</span>
+            try {
+<span class="nc" id="L84">                instance.clearConnectionQueue();</span>
+<span class="nc" id="L85">            } catch (ConnectionPoolException ex) {</span>
+<span class="nc" id="L86">                LOG.warn(&quot;Can't close connection pool&quot;, ex);</span>
+<span class="nc" id="L87">            }</span>
+<span class="nc" id="L88">            instance = null;</span>
+        }
+<span class="nc" id="L90">    }</span>
+
+
+    /**
+	 * Clear all connections
+	 * NOTE: Do not use it manually!
+	 * @throws ConnectionPoolException
+	 *             in case of problem with clear all connection
+	 */
+	private void clearConnectionQueue() throws ConnectionPoolException {
+		try {
+			Connection connection;
+<span class="nc bnc" id="L102" title="All 2 branches missed.">			while ((connection = freeConnections.poll()) != null) {</span>
+<span class="nc" id="L103">				connection.close();</span>
+				;
+			}
+<span class="nc bnc" id="L106" title="All 2 branches missed.">			while ((connection = busyConnections.poll()) != null) {</span>
+<span class="nc" id="L107">				connection.close();</span>
+			}
+<span class="nc" id="L109">		} catch (Exception e) {</span>
+<span class="nc" id="L110">			throw new ConnectionPoolException(</span>
+					&quot;Can't clear all pool connections&quot;, e);
+<span class="nc" id="L112">		}</span>
+<span class="nc" id="L113">	}</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>

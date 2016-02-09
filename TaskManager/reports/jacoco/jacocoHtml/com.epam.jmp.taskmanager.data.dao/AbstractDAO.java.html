@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>AbstractDAO.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">TaskManager</a> &gt; <a href="index.source.html" class="el_package">com.epam.jmp.taskmanager.data.dao</a> &gt; <span class="el_source">AbstractDAO.java</span></div><h1>AbstractDAO.java</h1><pre class="source lang-java linenums">package com.epam.jmp.taskmanager.data.dao;
+
+import java.sql.Statement;
+
+import org.apache.log4j.Logger;
+
+import com.epam.jmp.taskmanager.data.pool.IPool;
+import com.epam.jmp.taskmanager.exception.ConnectionPoolException;
+import com.epam.jmp.taskmanager.exception.TechnicalDAOException;
+
+/**
+ * 
+ * @author Aliaksei_Hlazkou
+ * 
+ * @param &lt;T&gt;
+ *            object to work with
+ * @param &lt;S&gt;
+ *            connection type
+ */
+<span class="nc" id="L20">public abstract class AbstractDAO&lt;T, S&gt;  implements DAOImpl&lt;T&gt;{</span>
+	/** logger */
+<span class="nc" id="L22">	private static final Logger LOG = Logger.getLogger(AbstractDAO.class);</span>
+	/** connections pool instance */
+	private IPool&lt;S&gt; connectionPool;
+
+	public IPool&lt;S&gt; getConnectionPool() {
+<span class="nc" id="L27">		return connectionPool;</span>
+	}
+
+	/**
+	 * Sets connections pool
+	 * 
+	 * @param connectionPool
+	 *            the connections pool to set
+	 * @throws ConnectionPoolException
+	 */
+	public void setPool(IPool&lt;S&gt; connectionPool)
+			throws ConnectionPoolException {
+<span class="nc" id="L39">		this.connectionPool = connectionPool;</span>
+<span class="nc" id="L40">		LOG.info(&quot;Pool was setted - &quot; + connectionPool.getClass().getName());</span>
+<span class="nc" id="L41">	}</span>
+
+	/**
+	 * Trying to get connection
+	 * 
+	 * @return the connections instance
+	 * @throws TechnicalDAOException
+	 *             in case of exception
+	 */
+	protected S getConnection() throws TechnicalDAOException {
+<span class="nc" id="L51">		S connection = null;</span>
+		try {
+
+<span class="nc" id="L54">			connection = this.getConnectionPool().takeConnection();</span>
+<span class="nc" id="L55">		} catch (ConnectionPoolException e) {</span>
+<span class="nc" id="L56">			throw new TechnicalDAOException(e);</span>
+<span class="nc" id="L57">		}</span>
+<span class="nc" id="L58">		LOG.info(&quot;Connection was taken.&quot;);</span>
+<span class="nc" id="L59">		return connection;</span>
+	}
+
+	/**
+	 * Releases provided connections
+	 * 
+	 * @param connection
+	 * @throws TechnicalDAOException
+	 */
+	protected void releaseConnection(S connection) throws TechnicalDAOException {
+		try {
+<span class="nc" id="L70">			LOG.info(&quot;Trying to release connection.&quot;);</span>
+<span class="nc" id="L71">			this.getConnectionPool().releaseConnection(connection);</span>
+<span class="nc" id="L72">		} catch (ConnectionPoolException e) {</span>
+<span class="nc" id="L73">			throw new TechnicalDAOException(e);</span>
+<span class="nc" id="L74">		}</span>
+<span class="nc" id="L75">		LOG.info(&quot;Connection was released&quot;);</span>
+<span class="nc" id="L76">	}</span>
+
+	/**
+	 * Closes SQL statements
+	 * 
+	 * @param st
+	 *            statement that is need to be closed
+	 * @throws TechnicalDAOException
+	 *             in case of exceptions
+	 */
+	protected void closeStatement(Statement st) throws TechnicalDAOException {
+<span class="nc bnc" id="L87" title="All 2 branches missed.">		if (st != null) {</span>
+			try {
+<span class="nc" id="L89">				LOG.info(&quot;Trying to close statement&quot;);</span>
+<span class="nc" id="L90">				st.close();</span>
+<span class="nc" id="L91">			} catch (Throwable e) {</span>
+<span class="nc" id="L92">				throw new TechnicalDAOException(e);</span>
+<span class="nc" id="L93">			}</span>
+<span class="nc" id="L94">			LOG.info(&quot;Statement was closed&quot;);</span>
+		}
+<span class="nc" id="L96">	}</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>

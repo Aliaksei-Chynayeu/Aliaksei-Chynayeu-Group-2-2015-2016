@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>FileThread.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">TaskManager</a> &gt; <a href="index.source.html" class="el_package">com.epam.jmp.taskmanager.util.thread</a> &gt; <span class="el_source">FileThread.java</span></div><h1>FileThread.java</h1><pre class="source lang-java linenums">package com.epam.jmp.taskmanager.util.thread;
+
+import java.util.concurrent.CountDownLatch;
+
+import org.apache.log4j.Logger;
+
+import com.epam.jmp.taskmanager.data.dao.FileDAO;
+import com.epam.jmp.taskmanager.exception.LogicalException;
+
+public class FileThread extends Thread {
+	/** logger */
+<span class="nc" id="L12">	private static final Logger LOG = Logger.getLogger(FileThread.class);</span>
+	/** latch */
+	private CountDownLatch latch;
+	/** thread name */
+	private String threadName;
+	/** dao */
+	FileDAO dao;
+
+	/**
+	 * Constructor
+	 * 
+	 * @param latch
+	 *            the CountDownLatch to set
+	 * @param threadName
+	 *            the thread name to set
+	 * @throws LogicalException
+	 *             in case of exception
+	 */
+<span class="nc" id="L30">	public FileThread(CountDownLatch latch, String threadName, FileDAO dao) throws LogicalException {</span>
+<span class="nc bnc" id="L31" title="All 2 branches missed.">		if (latch == null) {</span>
+<span class="nc" id="L32">			throw new LogicalException(&quot;Wrong latch argument&quot;);</span>
+		}
+<span class="nc" id="L34">		this.latch = latch;</span>
+<span class="nc" id="L35">		this.threadName = threadName;</span>
+<span class="nc" id="L36">		this.dao = dao;</span>
+<span class="nc" id="L37">		LOG.info(&quot;Thread #&quot; + getThreadName() + &quot; was created&quot;);</span>
+<span class="nc" id="L38">	}</span>
+
+	/**
+	 * Runs thread
+	 */
+	public void run() {
+		try {
+<span class="nc" id="L45">			LOG.info(&quot;Thread&quot; + getThreadName() + &quot; was started.&quot;);</span>
+<span class="nc" id="L46">			LOG.info(&quot;Thread&quot; + getThreadName() + &quot; is waiting to proceed.&quot;);</span>
+<span class="nc" id="L47">			latch.await();</span>
+<span class="nc" id="L48">		} catch (InterruptedException e) {</span>
+<span class="nc" id="L49">			LOG.warn(e);</span>
+<span class="nc" id="L50">		}</span>
+<span class="nc" id="L51">	};</span>
+
+	/**
+	 * Getter
+	 * 
+	 * @return latch
+	 */
+	public CountDownLatch getLatch() {
+<span class="nc" id="L59">		return latch;</span>
+	}
+
+	/**
+	 * Setter
+	 * 
+	 * @param latch
+	 *            the latch to set
+	 */
+	public void setLatch(CountDownLatch latch) {
+<span class="nc" id="L69">		this.latch = latch;</span>
+<span class="nc" id="L70">	}</span>
+
+	/**
+	 * Getter
+	 * 
+	 * @return the thread name
+	 */
+	public String getThreadName() {
+<span class="nc" id="L78">		return threadName;</span>
+	}
+
+	/**
+	 * Setter
+	 * 
+	 * @param name
+	 *            the thread name to set
+	 */
+	public void setThreadName(String name) {
+<span class="nc" id="L88">		this.threadName = name;</span>
+<span class="nc" id="L89">	}</span>
+
+	/**
+	 * Getter for DAO
+	 * 
+	 * @return the dao
+	 */
+	public FileDAO getDao() {
+<span class="nc" id="L97">		return dao;</span>
+	}
+
+	/**
+	 * Setter for the dao
+	 * 
+	 * @param dao
+	 *            the dao to return
+	 */
+	public void setDao(FileDAO dao) {
+<span class="nc" id="L107">		this.dao = dao;</span>
+<span class="nc" id="L108">	}</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>

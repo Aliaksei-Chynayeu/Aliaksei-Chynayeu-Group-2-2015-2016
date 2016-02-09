@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>TaskStoreGenearator.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">TaskManager</a> &gt; <a href="index.source.html" class="el_package">com.epam.jmp.taskmanager.util</a> &gt; <span class="el_source">TaskStoreGenearator.java</span></div><h1>TaskStoreGenearator.java</h1><pre class="source lang-java linenums">package com.epam.jmp.taskmanager.util;
+
+import java.util.Random;
+
+import org.apache.commons.lang3.RandomStringUtils;
+import org.apache.log4j.Logger;
+
+import com.epam.jmp.taskmanager.model.Task;
+import com.epam.jmp.taskmanager.model.TaskList;
+import com.epam.jmp.taskmanager.model.TaskStore;
+
+/**
+ * Generator for TaskStore
+ * 
+ * @author Aliaksei_Hlazkou
+ * 
+ */
+public class TaskStoreGenearator {
+	/** logger */
+<span class="nc" id="L20">	private static final Logger LOG = Logger</span>
+<span class="nc" id="L21">			.getLogger(TaskStoreGenearator.class);</span>
+
+	/**
+	 * Empty constructor
+	 */
+<span class="nc" id="L26">	public TaskStoreGenearator() {</span>
+<span class="nc" id="L27">	}</span>
+
+	/**
+	 * Gererates TaskStore
+	 * 
+	 * @return
+	 */
+	public static TaskStore generate() {
+<span class="nc" id="L35">		LOG.info(&quot;Trying to generate the TaskStore...&quot;);</span>
+
+<span class="nc" id="L37">		Task task1 = new Task();</span>
+<span class="nc" id="L38">		task1.setId(Math.abs(new Random().nextLong()));</span>
+<span class="nc" id="L39">		task1.setName(RandomStringUtils.randomAlphabetic(MagicNumbers.MAGIC_TEN));</span>
+<span class="nc" id="L40">		task1.setDescription(RandomStringUtils.randomAlphabetic(MagicNumbers.MAGIC_TEN));</span>
+
+<span class="nc" id="L42">		Task task2 = new Task();</span>
+<span class="nc" id="L43">		task2.setId(Math.abs(new Random().nextLong()));</span>
+<span class="nc" id="L44">		task2.setName(RandomStringUtils.randomAlphabetic(MagicNumbers.MAGIC_TEN));</span>
+<span class="nc" id="L45">		task2.setDescription(RandomStringUtils.randomAlphabetic(MagicNumbers.MAGIC_TEN));</span>
+
+<span class="nc" id="L47">		Task task3 = new Task();</span>
+<span class="nc" id="L48">		task3.setId(Math.abs(new Random().nextLong()));</span>
+<span class="nc" id="L49">		task3.setName(RandomStringUtils.randomAlphabetic(MagicNumbers.MAGIC_TEN));</span>
+<span class="nc" id="L50">		task3.setDescription(RandomStringUtils.randomAlphabetic(MagicNumbers.MAGIC_TEN));</span>
+
+<span class="nc" id="L52">		Task task4 = new Task();</span>
+<span class="nc" id="L53">		task4.setId(Math.abs(new Random().nextLong()));</span>
+<span class="nc" id="L54">		task4.setName(RandomStringUtils.randomAlphabetic(MagicNumbers.MAGIC_TEN));</span>
+<span class="nc" id="L55">		task4.setDescription(RandomStringUtils.randomAlphabetic(MagicNumbers.MAGIC_TEN));</span>
+
+<span class="nc" id="L57">		Task task5 = new Task();</span>
+<span class="nc" id="L58">		task5.setId(Math.abs(new Random().nextLong()));</span>
+<span class="nc" id="L59">		task5.setName(RandomStringUtils.randomAlphabetic(MagicNumbers.MAGIC_TEN));</span>
+<span class="nc" id="L60">		task5.setDescription(RandomStringUtils.randomAlphabetic(MagicNumbers.MAGIC_TEN));</span>
+
+<span class="nc" id="L62">		TaskList taskList1 = new TaskList();</span>
+<span class="nc" id="L63">		taskList1.getTasks().add(task1);</span>
+<span class="nc" id="L64">		taskList1.getTasks().add(task2);</span>
+<span class="nc" id="L65">		taskList1.setId(Math.abs(new Random().nextLong()));</span>
+
+<span class="nc" id="L67">		TaskList taskList2 = new TaskList();</span>
+<span class="nc" id="L68">		taskList2.getTasks().add(task3);</span>
+<span class="nc" id="L69">		taskList2.getTasks().add(task4);</span>
+<span class="nc" id="L70">		taskList2.getTasks().add(task5);</span>
+<span class="nc" id="L71">		taskList2.setId(Math.abs(new Random().nextLong()));</span>
+
+<span class="nc" id="L73">		TaskStore ts = new TaskStore();</span>
+<span class="nc" id="L74">		ts.getTaskList().add(taskList1);</span>
+<span class="nc" id="L75">		ts.getTaskList().add(taskList2);</span>
+<span class="nc" id="L76">		ts.setId(Math.abs(new Random().nextLong()));</span>
+		
+<span class="nc" id="L78">		LOG.info(&quot;TaskStore was generated : &quot; + ts);</span>
+<span class="nc" id="L79">		return ts;</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>

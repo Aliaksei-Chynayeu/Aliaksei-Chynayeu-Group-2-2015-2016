@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>FileDAO.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">TaskManager</a> &gt; <a href="index.source.html" class="el_package">com.epam.jmp.taskmanager.data.dao</a> &gt; <span class="el_source">FileDAO.java</span></div><h1>FileDAO.java</h1><pre class="source lang-java linenums">package com.epam.jmp.taskmanager.data.dao;
+
+import java.io.File;
+import java.io.IOException;
+import java.io.StringWriter;
+import java.util.List;
+
+import com.epam.jmp.taskmanager.exception.TechnicalDAOException;
+import com.epam.jmp.taskmanager.exception.TechnicalException;
+import com.epam.jmp.taskmanager.model.TaskStore;
+import com.epam.jmp.taskmanager.util.FileUtil;
+import com.epam.jmp.taskmanager.util.JAXBUtil;
+
+<span class="nc" id="L14">public class FileDAO extends AbstractDAO&lt;TaskStore, File&gt; {</span>
+
+
+	public TaskStore readFromFromFile() throws TechnicalDAOException {
+<span class="nc" id="L18">		File file = this.getConnection();</span>
+<span class="nc" id="L19">		TaskStore taskStore = null;</span>
+		try {
+<span class="nc" id="L21">			taskStore = JAXBUtil.unmarshall(TaskStore.class, file);</span>
+<span class="nc" id="L22">		} catch (TechnicalException e) {</span>
+<span class="nc" id="L23">			throw new TechnicalDAOException(e);</span>
+		} finally {
+<span class="nc" id="L25">			this.releaseConnection(file);</span>
+<span class="nc" id="L26">		}</span>
+<span class="nc" id="L27">		return taskStore;</span>
+	}
+
+	public void writeToFile(TaskStore taskStore) throws TechnicalDAOException {
+<span class="nc" id="L31">		File file = this.getConnection();</span>
+<span class="nc" id="L32">		StringWriter sw = null;</span>
+		try {
+<span class="nc" id="L34">			sw = JAXBUtil.marshall(taskStore, TaskStore.class);</span>
+<span class="nc" id="L35">			FileUtil.writeToFile(sw, file);</span>
+<span class="nc" id="L36">		} catch (TechnicalException e) {</span>
+<span class="nc" id="L37">			throw new TechnicalDAOException(e);</span>
+		} finally {
+<span class="nc" id="L39">			try {</span>
+<span class="nc" id="L40">				sw.close();</span>
+<span class="nc" id="L41">			} catch (IOException e) {</span>
+<span class="nc" id="L42">				throw new TechnicalDAOException(e);</span>
+<span class="nc" id="L43">			}</span>
+<span class="nc" id="L44">			this.releaseConnection(file);</span>
+<span class="nc" id="L45">		}</span>
+<span class="nc" id="L46">	}</span>
+
+	public List&lt;TaskStore&gt; getList() throws TechnicalDAOException {
+		// TODO Auto-generated method stub
+<span class="nc" id="L50">		return null;</span>
+	}
+
+	public TaskStore fetchById(long obj) throws TechnicalDAOException {
+		// TODO Auto-generated method stub
+<span class="nc" id="L55">		return null;</span>
+	}
+
+	public void save(TaskStore obj) throws TechnicalDAOException {
+		// TODO Auto-generated method stub
+		
+<span class="nc" id="L61">	}</span>
+
+	public void remove(Long... ids) throws TechnicalDAOException {
+		// TODO Auto-generated method stub
+		
+<span class="nc" id="L66">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>

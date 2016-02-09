@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>AbstractPool.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">TaskManager</a> &gt; <a href="index.source.html" class="el_package">com.epam.jmp.taskmanager.data.pool</a> &gt; <span class="el_source">AbstractPool.java</span></div><h1>AbstractPool.java</h1><pre class="source lang-java linenums">package com.epam.jmp.taskmanager.data.pool;
+
+import java.io.Closeable;
+import java.sql.Connection;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+
+import org.apache.log4j.Logger;
+
+import com.epam.jmp.taskmanager.exception.ConnectionPoolException;
+
+/**
+ * Connections to database
+ * 
+ * @author Aliaksei_Hlazkou
+ * 
+ * @param &lt;S&gt;
+ *            Connection type
+ */
+<span class="nc" id="L22">public abstract class AbstractPool&lt;S&gt; implements IPool&lt;S&gt; {</span>
+	/**
+	 * logger
+	 */
+<span class="nc" id="L26">	private static final Logger LOG = Logger.getLogger(AbstractPool.class);</span>
+	/** Object of BlockingQueue class with queue of free connections */
+	protected BlockingQueue&lt;S&gt; freeConnections;
+	/** Object of BlockingQueue class with queue of busy connections */
+	protected BlockingQueue&lt;S&gt; busyConnections;
+	/** database driver name */
+	private String driver;
+	/** databese url */
+	private String url;
+	/** user */
+	private String user;
+	/** password */
+	private String password;
+	/** pool size */
+	private int poolSize;
+	/** Flag that shows if pool can give connection */
+<span class="nc" id="L42">	protected static AtomicBoolean isConnected = new AtomicBoolean(Boolean.TRUE);</span>
+	/** Lock class object */
+<span class="nc" id="L44">	protected static final Lock LOCK = new ReentrantLock();</span>
+
+	/**
+	 * Getter for the url field
+	 * 
+	 * @return teh url
+	 */
+	public String getUrl() {
+<span class="nc" id="L52">		return url;</span>
+	}
+
+	/**
+	 * Getter for the user field
+	 * 
+	 * @return teh user
+	 */
+	public String getUser() {
+<span class="nc" id="L61">		return user;</span>
+	}
+
+	/**
+	 * Getter for the password field
+	 * 
+	 * @return
+	 */
+	public String getPassword() {
+<span class="nc" id="L70">		return password;</span>
+	}
+
+	/**
+	 * Setter for the url field
+	 * 
+	 * @param url
+	 */
+	public void setUrl(String url) {
+<span class="nc" id="L79">		this.url = url;</span>
+<span class="nc" id="L80">	}</span>
+
+	/**
+	 * Setter for the user field
+	 * 
+	 * @param user
+	 */
+	public void setUser(String user) {
+<span class="nc" id="L88">		this.user = user;</span>
+<span class="nc" id="L89">	}</span>
+
+	/**
+	 * Setter for the password field
+	 * 
+	 * @param password
+	 */
+	public void setPassword(String password) {
+<span class="nc" id="L97">		this.password = password;</span>
+<span class="nc" id="L98">	}</span>
+
+	/**
+	 * Setter for the pool size field
+	 * 
+	 * @return
+	 */
+	public int getPoolSize() {
+<span class="nc" id="L106">		return poolSize;</span>
+	}
+
+	/**
+	 * Setter for the pool size field
+	 * 
+	 * @param poolSize
+	 */
+	public void setPoolSize(int poolSize) {
+<span class="nc" id="L115">		this.poolSize = poolSize;</span>
+<span class="nc" id="L116">	}</span>
+
+	/**
+	 * Setter for the driver field
+	 * 
+	 * @return
+	 */
+	public String getDriver() {
+<span class="nc" id="L124">		return driver;</span>
+	}
+
+	/**
+	 * Setter for the drive field
+	 * 
+	 * @param driver
+	 */
+	public void setDriver(String driver) {
+<span class="nc" id="L133">		this.driver = driver;</span>
+<span class="nc" id="L134">	}</span>
+
+	/**
+	 * Initialization of the ConnectionPool class
+	 * 
+	 * @throws ConnectionPoolException
+	 *             in case of problems width connection or driver
+	 */
+	public abstract void initPool() throws ConnectionPoolException;
+
+
+	/**
+	 * Gives connection
+	 * 
+	 * @return Connection object
+	 * @throws ConnectionPoolException
+	 *             in case of problem with taking connection
+	 */
+	public S takeConnection() throws ConnectionPoolException {
+<span class="nc" id="L153">		S connection = null;</span>
+		try {
+<span class="nc" id="L155">			connection = freeConnections.take();</span>
+<span class="nc" id="L156">			busyConnections.put(connection);</span>
+<span class="nc" id="L157">		} catch (InterruptedException e) {</span>
+<span class="nc" id="L158">			throw new ConnectionPoolException(e);</span>
+<span class="nc" id="L159">		}</span>
+<span class="nc" id="L160">		return connection;</span>
+	}
+
+	/**
+	 * Release connection
+	 * 
+	 * @param connection
+	 *            Connection that is nesseccary to be released
+	 * @throws ConnectionPoolException
+	 *             in case of problem with releasing connection
+	 */
+	public void releaseConnection(S connection)
+			throws ConnectionPoolException {
+		try {
+<span class="nc" id="L174">			busyConnections.remove(connection);</span>
+<span class="nc" id="L175">			freeConnections.put(connection);</span>
+<span class="nc" id="L176">		} catch (InterruptedException e) {</span>
+<span class="nc" id="L177">			throw new ConnectionPoolException(&quot;Can't release connection&quot;, e);</span>
+
+<span class="nc" id="L179">		}</span>
+<span class="nc" id="L180">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>
