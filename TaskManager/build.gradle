@@ -90,7 +90,6 @@ task appJavaDoc(type: Javadoc) {
 build.dependsOn appJar
 appJar.dependsOn appJacocoTestReport
 appJacocoTestReport.dependsOn findbugsSecurity
-jacocoTestReport.dependsOn test
 test.dependsOn classes
 build.dependsOn appJavaDoc
 
