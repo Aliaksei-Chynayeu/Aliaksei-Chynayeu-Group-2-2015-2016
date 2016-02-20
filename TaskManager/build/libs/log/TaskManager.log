@@ -1,0 +1,118 @@
+INFO  2016-02-16 20:00:40,921 [main][App.java:32] : Specify the path to file
+INFO  2016-02-16 20:00:45,492 [main][AbstractDAO.java:40] : Pool was setted - com.epam.jmp.taskmanager.data.pool.FilePool
+INFO  2016-02-16 20:00:45,492 [main][TaskStoreGenearator.java:35] : Trying to generate the TaskStore...
+INFO  2016-02-16 20:00:45,492 [main][TaskStoreGenearator.java:78] : TaskStore was generated : TaskStore [taskList=[TaskList [tasks=[Task [id=3368406649060142242, name=VsoMRuNZqG, description=NuaDyrFjhf, assignedUsers=[], deadline=null, startDate=null, finishDate=null], Task [id=2214726574396587758, name=hooBwkbHoC, description=lQmQeeytlk, assignedUsers=[], deadline=null, startDate=null, finishDate=null]], id=4028456329825206663], TaskList [tasks=[Task [id=4309267938558898381, name=xkRRLACxar, description=VnlFzWkqll, assignedUsers=[], deadline=null, startDate=null, finishDate=null], Task [id=5885959420701401810, name=IuUkrRmaVs, description=ecjfgaAKJX, assignedUsers=[], deadline=null, startDate=null, finishDate=null], Task [id=5294996045653728040, name=snCZhoXixw, description=tXFXQHDtys, assignedUsers=[], deadline=null, startDate=null, finishDate=null]], id=6108106742232062947]], id=6406982185680562336]
+INFO  2016-02-16 20:00:45,508 [main][FileThread.java:37] : Thread #1 was created
+INFO  2016-02-16 20:00:45,508 [main][App.java:49] : Thread #1 was created with TaskStore : TaskStore [taskList=[TaskList [tasks=[Task [id=3368406649060142242, name=VsoMRuNZqG, description=NuaDyrFjhf, assignedUsers=[], deadline=null, startDate=null, finishDate=null], Task [id=2214726574396587758, name=hooBwkbHoC, description=lQmQeeytlk, assignedUsers=[], deadline=null, startDate=null, finishDate=null]], id=4028456329825206663], TaskList [tasks=[Task [id=4309267938558898381, name=xkRRLACxar, description=VnlFzWkqll, assignedUsers=[], deadline=null, startDate=null, finishDate=null], Task [id=5885959420701401810, name=IuUkrRmaVs, description=ecjfgaAKJX, assignedUsers=[], deadline=null, startDate=null, finishDate=null], Task [id=5294996045653728040, name=snCZhoXixw, description=tXFXQHDtys, assignedUsers=[], deadline=null, startDate=null, finishDate=null]], id=6108106742232062947]], id=6406982185680562336]
+INFO  2016-02-16 20:00:45,523 [main][TaskStoreGenearator.java:35] : Trying to generate the TaskStore...
+INFO  2016-02-16 20:00:45,523 [main][TaskStoreGenearator.java:78] : TaskStore was generated : TaskStore [taskList=[TaskList [tasks=[Task [id=8074211066254248559, name=sigeWzgqex, description=XxuHINTAAo, assignedUsers=[], deadline=null, startDate=null, finishDate=null], Task [id=4567847680213240536, name=VszGecpBgA, description=BdBitbRRDN, assignedUsers=[], deadline=null, startDate=null, finishDate=null]], id=3862363009506556439], TaskList [tasks=[Task [id=4094798981849999139, name=XmldDTTJzs, description=pZdCDsKOqX, assignedUsers=[], deadline=null, startDate=null, finishDate=null], Task [id=1321287669824864082, name=SwGLqVTcTJ, description=WbUZIpWxus, assignedUsers=[], deadline=null, startDate=null, finishDate=null], Task [id=275571409513332185, name=zscnMFEDhh, description=TdpjaHWGqZ, assignedUsers=[], deadline=null, startDate=null, finishDate=null]], id=6744857544072527282]], id=7144476738568826808]
+INFO  2016-02-16 20:00:45,523 [main][FileThread.java:37] : Thread #2 was created
+INFO  2016-02-16 20:00:45,523 [main][App.java:49] : Thread #2 was created with TaskStore : TaskStore [taskList=[TaskList [tasks=[Task [id=8074211066254248559, name=sigeWzgqex, description=XxuHINTAAo, assignedUsers=[], deadline=null, startDate=null, finishDate=null], Task [id=4567847680213240536, name=VszGecpBgA, description=BdBitbRRDN, assignedUsers=[], deadline=null, startDate=null, finishDate=null]], id=3862363009506556439], TaskList [tasks=[Task [id=4094798981849999139, name=XmldDTTJzs, description=pZdCDsKOqX, assignedUsers=[], deadline=null, startDate=null, finishDate=null], Task [id=1321287669824864082, name=SwGLqVTcTJ, description=WbUZIpWxus, assignedUsers=[], deadline=null, startDate=null, finishDate=null], Task [id=275571409513332185, name=zscnMFEDhh, description=TdpjaHWGqZ, assignedUsers=[], deadline=null, startDate=null, finishDate=null]], id=6744857544072527282]], id=7144476738568826808]
+INFO  2016-02-16 20:00:45,539 [main][TaskStoreGenearator.java:35] : Trying to generate the TaskStore...
+INFO  2016-02-16 20:00:45,539 [main][TaskStoreGenearator.java:78] : TaskStore was generated : TaskStore [taskList=[TaskList [tasks=[Task [id=1150135602859560014, name=ULsDILmdRn, description=krnpuOurhc, assignedUsers=[], deadline=null, startDate=null, finishDate=null], Task [id=2332065043315947753, name=kPRyYvqGEo, description=RZCKkphCFt, assignedUsers=[], deadline=null, startDate=null, finishDate=null]], id=4807296257200818801], TaskList [tasks=[Task [id=397059309716071688, name=pTTaCQAADo, description=spgZgmoyjQ, assignedUsers=[], deadline=null, startDate=null, finishDate=null], Task [id=779114892809074070, name=AKHMvZBcpR, description=aDRLCWTCSX, assignedUsers=[], deadline=null, startDate=null, finishDate=null], Task [id=2831263970270054953, name=jSEPDLyzQc, description=qXxHVEluxD, assignedUsers=[], deadline=null, startDate=null, finishDate=null]], id=3228005375174201039]], id=155781065730623869]
+INFO  2016-02-16 20:00:45,539 [main][FileThread.java:37] : Thread #3 was created
+INFO  2016-02-16 20:00:45,539 [main][App.java:49] : Thread #3 was created with TaskStore : TaskStore [taskList=[TaskList [tasks=[Task [id=1150135602859560014, name=ULsDILmdRn, description=krnpuOurhc, assignedUsers=[], deadline=null, startDate=null, finishDate=null], Task [id=2332065043315947753, name=kPRyYvqGEo, description=RZCKkphCFt, assignedUsers=[], deadline=null, startDate=null, finishDate=null]], id=4807296257200818801], TaskList [tasks=[Task [id=397059309716071688, name=pTTaCQAADo, description=spgZgmoyjQ, assignedUsers=[], deadline=null, startDate=null, finishDate=null], Task [id=779114892809074070, name=AKHMvZBcpR, description=aDRLCWTCSX, assignedUsers=[], deadline=null, startDate=null, finishDate=null], Task [id=2831263970270054953, name=jSEPDLyzQc, description=qXxHVEluxD, assignedUsers=[], deadline=null, startDate=null, finishDate=null]], id=3228005375174201039]], id=155781065730623869]
+INFO  2016-02-16 20:00:45,555 [main][TaskStoreGenearator.java:35] : Trying to generate the TaskStore...
+INFO  2016-02-16 20:00:45,555 [main][TaskStoreGenearator.java:78] : TaskStore was generated : TaskStore [taskList=[TaskList [tasks=[Task [id=7038572533513581069, name=DFMUCjUeTp, description=BTkdXTtDcy, assignedUsers=[], deadline=null, startDate=null, finishDate=null], Task [id=1958337284436235800, name=aEkHYoDZEa, description=cjrBRHWAVZ, assignedUsers=[], deadline=null, startDate=null, finishDate=null]], id=4806138165048397528], TaskList [tasks=[Task [id=8082792314913578, name=zAZriFmoaE, description=wlkbIROpwq, assignedUsers=[], deadline=null, startDate=null, finishDate=null], Task [id=6332691446457291180, name=cgTbkzmoOd, description=cuiMeegXaP, assignedUsers=[], deadline=null, startDate=null, finishDate=null], Task [id=8646920832818662065, name=sOOouBcvdN, description=vimKuHPcpZ, assignedUsers=[], deadline=null, startDate=null, finishDate=null]], id=7401219426382060482]], id=5063456226365228104]
+INFO  2016-02-16 20:00:45,555 [main][FileThread.java:37] : Thread #4 was created
+INFO  2016-02-16 20:00:45,555 [main][App.java:49] : Thread #4 was created with TaskStore : TaskStore [taskList=[TaskList [tasks=[Task [id=7038572533513581069, name=DFMUCjUeTp, description=BTkdXTtDcy, assignedUsers=[], deadline=null, startDate=null, finishDate=null], Task [id=1958337284436235800, name=aEkHYoDZEa, description=cjrBRHWAVZ, assignedUsers=[], deadline=null, startDate=null, finishDate=null]], id=4806138165048397528], TaskList [tasks=[Task [id=8082792314913578, name=zAZriFmoaE, description=wlkbIROpwq, assignedUsers=[], deadline=null, startDate=null, finishDate=null], Task [id=6332691446457291180, name=cgTbkzmoOd, description=cuiMeegXaP, assignedUsers=[], deadline=null, startDate=null, finishDate=null], Task [id=8646920832818662065, name=sOOouBcvdN, description=vimKuHPcpZ, assignedUsers=[], deadline=null, startDate=null, finishDate=null]], id=7401219426382060482]], id=5063456226365228104]
+INFO  2016-02-16 20:00:45,508 [Thread-0][FileThread.java:45] : Thread1 was started.
+INFO  2016-02-16 20:00:45,570 [Thread-0][FileThread.java:46] : Thread1 is waiting to proceed.
+INFO  2016-02-16 20:00:45,570 [main][FileThread.java:37] : Thread #5 was created
+INFO  2016-02-16 20:00:45,570 [Thread-3][FileThread.java:45] : Thread4 was started.
+INFO  2016-02-16 20:00:45,570 [Thread-3][FileThread.java:46] : Thread4 is waiting to proceed.
+INFO  2016-02-16 20:00:45,555 [Thread-2][FileThread.java:45] : Thread3 was started.
+INFO  2016-02-16 20:00:45,570 [Thread-2][FileThread.java:46] : Thread3 is waiting to proceed.
+INFO  2016-02-16 20:00:45,539 [Thread-1][FileThread.java:45] : Thread2 was started.
+INFO  2016-02-16 20:00:45,570 [Thread-1][FileThread.java:46] : Thread2 is waiting to proceed.
+INFO  2016-02-16 20:00:45,570 [Thread-4][FileThread.java:45] : Thread5 was started.
+INFO  2016-02-16 20:00:45,570 [Thread-4][FileThread.java:46] : Thread5 is waiting to proceed.
+INFO  2016-02-16 20:00:45,570 [main][App.java:56] : Thread #5 was created to read file
+INFO  2016-02-16 20:00:45,586 [main][FileThread.java:37] : Thread #6 was created
+INFO  2016-02-16 20:00:45,586 [main][App.java:56] : Thread #6 was created to read file
+INFO  2016-02-16 20:00:45,586 [main][FileThread.java:37] : Thread #7 was created
+INFO  2016-02-16 20:00:45,586 [Thread-5][FileThread.java:45] : Thread6 was started.
+INFO  2016-02-16 20:00:45,586 [Thread-5][FileThread.java:46] : Thread6 is waiting to proceed.
+INFO  2016-02-16 20:00:45,586 [main][App.java:56] : Thread #7 was created to read file
+INFO  2016-02-16 20:00:45,586 [main][FileThread.java:37] : Thread #8 was created
+INFO  2016-02-16 20:00:45,586 [Thread-6][FileThread.java:45] : Thread7 was started.
+INFO  2016-02-16 20:00:45,586 [Thread-6][FileThread.java:46] : Thread7 is waiting to proceed.
+INFO  2016-02-16 20:00:45,586 [Thread-7][FileThread.java:45] : Thread8 was started.
+INFO  2016-02-16 20:00:45,586 [Thread-7][FileThread.java:46] : Thread8 is waiting to proceed.
+INFO  2016-02-16 20:00:45,586 [main][App.java:56] : Thread #8 was created to read file
+INFO  2016-02-16 20:00:45,586 [main][FileThread.java:37] : Thread #9 was created
+INFO  2016-02-16 20:00:45,586 [main][App.java:56] : Thread #9 was created to read file
+INFO  2016-02-16 20:00:45,586 [Thread-8][FileThread.java:45] : Thread9 was started.
+INFO  2016-02-16 20:00:45,586 [Thread-8][FileThread.java:46] : Thread9 is waiting to proceed.
+INFO  2016-02-16 20:00:45,586 [Thread-8][FileReaderThread.java:43] : Thread #9 is running.
+INFO  2016-02-16 20:00:45,586 [Thread-8][AbstractDAO.java:58] : Connection was taken.
+INFO  2016-02-16 20:00:45,586 [Thread-1][FileWriterThread.java:44] : Thread2 is running.
+INFO  2016-02-16 20:00:45,586 [Thread-3][FileWriterThread.java:44] : Thread4 is running.
+INFO  2016-02-16 20:00:45,586 [Thread-0][FileWriterThread.java:44] : Thread1 is running.
+INFO  2016-02-16 20:00:45,586 [Thread-7][FileReaderThread.java:43] : Thread #8 is running.
+INFO  2016-02-16 20:00:45,586 [Thread-5][FileReaderThread.java:43] : Thread #6 is running.
+INFO  2016-02-16 20:00:45,586 [Thread-6][FileReaderThread.java:43] : Thread #7 is running.
+INFO  2016-02-16 20:00:45,586 [Thread-4][FileReaderThread.java:43] : Thread #5 is running.
+INFO  2016-02-16 20:00:45,586 [Thread-2][FileWriterThread.java:44] : Thread3 is running.
+INFO  2016-02-16 20:00:45,601 [Thread-8][JAXBUtil.java:48] : Trying to unmarshall data.
+INFO  2016-02-16 20:00:46,288 [Thread-8][AbstractDAO.java:70] : Trying to release connection.
+INFO  2016-02-16 20:00:46,288 [Thread-8][AbstractDAO.java:75] : Connection was released
+WARN  2016-02-16 20:00:46,288 [Thread-8][FileReaderThread.java:48] : com.epam.jmp.taskmanager.exception.TechnicalDAOException: com.epam.jmp.taskmanager.exception.TechnicalException: javax.xml.bind.UnmarshalException
+ - with linked exception:
+[java.io.FileNotFoundException: D:\trainings\jmp2015-2016\workspace\Aliaksei-Chynayeu-Group-2-2015-2016\TaskManager\build\libs\dwefwefw (Не удается найти указанный файл)]
+INFO  2016-02-16 20:00:46,288 [Thread-1][AbstractDAO.java:58] : Connection was taken.
+INFO  2016-02-16 20:00:46,288 [Thread-1][JAXBUtil.java:75] : Trying to marshall object...
+INFO  2016-02-16 20:00:46,397 [Thread-1][JAXBUtil.java:80] : Object was marshalled
+INFO  2016-02-16 20:00:46,397 [Thread-1][AbstractDAO.java:70] : Trying to release connection.
+INFO  2016-02-16 20:00:46,397 [Thread-3][AbstractDAO.java:58] : Connection was taken.
+INFO  2016-02-16 20:00:46,397 [Thread-3][JAXBUtil.java:75] : Trying to marshall object...
+INFO  2016-02-16 20:00:46,397 [Thread-1][AbstractDAO.java:75] : Connection was released
+INFO  2016-02-16 20:00:46,397 [Thread-1][FileWriterThread.java:47] : Thread #2 saved TaskStore to file. 
+TaskStore [taskList=[TaskList [tasks=[Task [id=8074211066254248559, name=sigeWzgqex, description=XxuHINTAAo, assignedUsers=[], deadline=null, startDate=null, finishDate=null], Task [id=4567847680213240536, name=VszGecpBgA, description=BdBitbRRDN, assignedUsers=[], deadline=null, startDate=null, finishDate=null]], id=3862363009506556439], TaskList [tasks=[Task [id=4094798981849999139, name=XmldDTTJzs, description=pZdCDsKOqX, assignedUsers=[], deadline=null, startDate=null, finishDate=null], Task [id=1321287669824864082, name=SwGLqVTcTJ, description=WbUZIpWxus, assignedUsers=[], deadline=null, startDate=null, finishDate=null], Task [id=275571409513332185, name=zscnMFEDhh, description=TdpjaHWGqZ, assignedUsers=[], deadline=null, startDate=null, finishDate=null]], id=6744857544072527282]], id=7144476738568826808]
+INFO  2016-02-16 20:00:46,413 [Thread-3][JAXBUtil.java:80] : Object was marshalled
+INFO  2016-02-16 20:00:46,413 [Thread-3][AbstractDAO.java:70] : Trying to release connection.
+INFO  2016-02-16 20:00:46,413 [Thread-3][AbstractDAO.java:75] : Connection was released
+INFO  2016-02-16 20:00:46,413 [Thread-3][FileWriterThread.java:47] : Thread #4 saved TaskStore to file. 
+TaskStore [taskList=[TaskList [tasks=[Task [id=7038572533513581069, name=DFMUCjUeTp, description=BTkdXTtDcy, assignedUsers=[], deadline=null, startDate=null, finishDate=null], Task [id=1958337284436235800, name=aEkHYoDZEa, description=cjrBRHWAVZ, assignedUsers=[], deadline=null, startDate=null, finishDate=null]], id=4806138165048397528], TaskList [tasks=[Task [id=8082792314913578, name=zAZriFmoaE, description=wlkbIROpwq, assignedUsers=[], deadline=null, startDate=null, finishDate=null], Task [id=6332691446457291180, name=cgTbkzmoOd, description=cuiMeegXaP, assignedUsers=[], deadline=null, startDate=null, finishDate=null], Task [id=8646920832818662065, name=sOOouBcvdN, description=vimKuHPcpZ, assignedUsers=[], deadline=null, startDate=null, finishDate=null]], id=7401219426382060482]], id=5063456226365228104]
+INFO  2016-02-16 20:00:46,413 [Thread-0][AbstractDAO.java:58] : Connection was taken.
+INFO  2016-02-16 20:00:46,413 [Thread-0][JAXBUtil.java:75] : Trying to marshall object...
+INFO  2016-02-16 20:00:46,428 [Thread-0][JAXBUtil.java:80] : Object was marshalled
+INFO  2016-02-16 20:00:46,428 [Thread-0][AbstractDAO.java:70] : Trying to release connection.
+INFO  2016-02-16 20:00:46,428 [Thread-0][AbstractDAO.java:75] : Connection was released
+INFO  2016-02-16 20:00:46,428 [Thread-0][FileWriterThread.java:47] : Thread #1 saved TaskStore to file. 
+TaskStore [taskList=[TaskList [tasks=[Task [id=3368406649060142242, name=VsoMRuNZqG, description=NuaDyrFjhf, assignedUsers=[], deadline=null, startDate=null, finishDate=null], Task [id=2214726574396587758, name=hooBwkbHoC, description=lQmQeeytlk, assignedUsers=[], deadline=null, startDate=null, finishDate=null]], id=4028456329825206663], TaskList [tasks=[Task [id=4309267938558898381, name=xkRRLACxar, description=VnlFzWkqll, assignedUsers=[], deadline=null, startDate=null, finishDate=null], Task [id=5885959420701401810, name=IuUkrRmaVs, description=ecjfgaAKJX, assignedUsers=[], deadline=null, startDate=null, finishDate=null], Task [id=5294996045653728040, name=snCZhoXixw, description=tXFXQHDtys, assignedUsers=[], deadline=null, startDate=null, finishDate=null]], id=6108106742232062947]], id=6406982185680562336]
+INFO  2016-02-16 20:00:46,428 [Thread-7][AbstractDAO.java:58] : Connection was taken.
+INFO  2016-02-16 20:00:46,428 [Thread-7][JAXBUtil.java:48] : Trying to unmarshall data.
+INFO  2016-02-16 20:00:46,584 [Thread-7][JAXBUtil.java:52] : Data was unmarshalled
+INFO  2016-02-16 20:00:46,584 [Thread-7][AbstractDAO.java:70] : Trying to release connection.
+INFO  2016-02-16 20:00:46,584 [Thread-7][AbstractDAO.java:75] : Connection was released
+INFO  2016-02-16 20:00:46,584 [Thread-7][FileReaderThread.java:46] : Thread #8 read the file. 
+TaskStore [taskList=[TaskList [tasks=[Task [id=3368406649060142242, name=VsoMRuNZqG, description=NuaDyrFjhf, assignedUsers=[], deadline=null, startDate=null, finishDate=null], Task [id=2214726574396587758, name=hooBwkbHoC, description=lQmQeeytlk, assignedUsers=[], deadline=null, startDate=null, finishDate=null]], id=4028456329825206663], TaskList [tasks=[Task [id=4309267938558898381, name=xkRRLACxar, description=VnlFzWkqll, assignedUsers=[], deadline=null, startDate=null, finishDate=null], Task [id=5885959420701401810, name=IuUkrRmaVs, description=ecjfgaAKJX, assignedUsers=[], deadline=null, startDate=null, finishDate=null], Task [id=5294996045653728040, name=snCZhoXixw, description=tXFXQHDtys, assignedUsers=[], deadline=null, startDate=null, finishDate=null]], id=6108106742232062947]], id=6406982185680562336]
+INFO  2016-02-16 20:00:46,584 [Thread-5][AbstractDAO.java:58] : Connection was taken.
+INFO  2016-02-16 20:00:46,584 [Thread-5][JAXBUtil.java:48] : Trying to unmarshall data.
+INFO  2016-02-16 20:00:46,600 [Thread-5][JAXBUtil.java:52] : Data was unmarshalled
+INFO  2016-02-16 20:00:46,600 [Thread-5][AbstractDAO.java:70] : Trying to release connection.
+INFO  2016-02-16 20:00:46,600 [Thread-5][AbstractDAO.java:75] : Connection was released
+INFO  2016-02-16 20:00:46,600 [Thread-5][FileReaderThread.java:46] : Thread #6 read the file. 
+TaskStore [taskList=[TaskList [tasks=[Task [id=3368406649060142242, name=VsoMRuNZqG, description=NuaDyrFjhf, assignedUsers=[], deadline=null, startDate=null, finishDate=null], Task [id=2214726574396587758, name=hooBwkbHoC, description=lQmQeeytlk, assignedUsers=[], deadline=null, startDate=null, finishDate=null]], id=4028456329825206663], TaskList [tasks=[Task [id=4309267938558898381, name=xkRRLACxar, description=VnlFzWkqll, assignedUsers=[], deadline=null, startDate=null, finishDate=null], Task [id=5885959420701401810, name=IuUkrRmaVs, description=ecjfgaAKJX, assignedUsers=[], deadline=null, startDate=null, finishDate=null], Task [id=5294996045653728040, name=snCZhoXixw, description=tXFXQHDtys, assignedUsers=[], deadline=null, startDate=null, finishDate=null]], id=6108106742232062947]], id=6406982185680562336]
+INFO  2016-02-16 20:00:46,600 [Thread-6][AbstractDAO.java:58] : Connection was taken.
+INFO  2016-02-16 20:00:46,600 [Thread-6][JAXBUtil.java:48] : Trying to unmarshall data.
+INFO  2016-02-16 20:00:46,600 [Thread-6][JAXBUtil.java:52] : Data was unmarshalled
+INFO  2016-02-16 20:00:46,600 [Thread-6][AbstractDAO.java:70] : Trying to release connection.
+INFO  2016-02-16 20:00:46,600 [Thread-6][AbstractDAO.java:75] : Connection was released
+INFO  2016-02-16 20:00:46,600 [Thread-4][AbstractDAO.java:58] : Connection was taken.
+INFO  2016-02-16 20:00:46,615 [Thread-4][JAXBUtil.java:48] : Trying to unmarshall data.
+INFO  2016-02-16 20:00:46,615 [Thread-6][FileReaderThread.java:46] : Thread #7 read the file. 
+TaskStore [taskList=[TaskList [tasks=[Task [id=3368406649060142242, name=VsoMRuNZqG, description=NuaDyrFjhf, assignedUsers=[], deadline=null, startDate=null, finishDate=null], Task [id=2214726574396587758, name=hooBwkbHoC, description=lQmQeeytlk, assignedUsers=[], deadline=null, startDate=null, finishDate=null]], id=4028456329825206663], TaskList [tasks=[Task [id=4309267938558898381, name=xkRRLACxar, description=VnlFzWkqll, assignedUsers=[], deadline=null, startDate=null, finishDate=null], Task [id=5885959420701401810, name=IuUkrRmaVs, description=ecjfgaAKJX, assignedUsers=[], deadline=null, startDate=null, finishDate=null], Task [id=5294996045653728040, name=snCZhoXixw, description=tXFXQHDtys, assignedUsers=[], deadline=null, startDate=null, finishDate=null]], id=6108106742232062947]], id=6406982185680562336]
+INFO  2016-02-16 20:00:46,615 [Thread-4][JAXBUtil.java:52] : Data was unmarshalled
+INFO  2016-02-16 20:00:46,615 [Thread-4][AbstractDAO.java:70] : Trying to release connection.
+INFO  2016-02-16 20:00:46,615 [Thread-4][AbstractDAO.java:75] : Connection was released
+INFO  2016-02-16 20:00:46,615 [Thread-2][AbstractDAO.java:58] : Connection was taken.
+INFO  2016-02-16 20:00:46,615 [Thread-4][FileReaderThread.java:46] : Thread #5 read the file. 
+TaskStore [taskList=[TaskList [tasks=[Task [id=3368406649060142242, name=VsoMRuNZqG, description=NuaDyrFjhf, assignedUsers=[], deadline=null, startDate=null, finishDate=null], Task [id=2214726574396587758, name=hooBwkbHoC, description=lQmQeeytlk, assignedUsers=[], deadline=null, startDate=null, finishDate=null]], id=4028456329825206663], TaskList [tasks=[Task [id=4309267938558898381, name=xkRRLACxar, description=VnlFzWkqll, assignedUsers=[], deadline=null, startDate=null, finishDate=null], Task [id=5885959420701401810, name=IuUkrRmaVs, description=ecjfgaAKJX, assignedUsers=[], deadline=null, startDate=null, finishDate=null], Task [id=5294996045653728040, name=snCZhoXixw, description=tXFXQHDtys, assignedUsers=[], deadline=null, startDate=null, finishDate=null]], id=6108106742232062947]], id=6406982185680562336]
+INFO  2016-02-16 20:00:46,615 [Thread-2][JAXBUtil.java:75] : Trying to marshall object...
+INFO  2016-02-16 20:00:46,631 [Thread-2][JAXBUtil.java:80] : Object was marshalled
+INFO  2016-02-16 20:00:46,631 [Thread-2][AbstractDAO.java:70] : Trying to release connection.
+INFO  2016-02-16 20:00:46,631 [Thread-2][AbstractDAO.java:75] : Connection was released
+INFO  2016-02-16 20:00:46,631 [Thread-2][FileWriterThread.java:47] : Thread #3 saved TaskStore to file. 
+TaskStore [taskList=[TaskList [tasks=[Task [id=1150135602859560014, name=ULsDILmdRn, description=krnpuOurhc, assignedUsers=[], deadline=null, startDate=null, finishDate=null], Task [id=2332065043315947753, name=kPRyYvqGEo, description=RZCKkphCFt, assignedUsers=[], deadline=null, startDate=null, finishDate=null]], id=4807296257200818801], TaskList [tasks=[Task [id=397059309716071688, name=pTTaCQAADo, description=spgZgmoyjQ, assignedUsers=[], deadline=null, startDate=null, finishDate=null], Task [id=779114892809074070, name=AKHMvZBcpR, description=aDRLCWTCSX, assignedUsers=[], deadline=null, startDate=null, finishDate=null], Task [id=2831263970270054953, name=jSEPDLyzQc, description=qXxHVEluxD, assignedUsers=[], deadline=null, startDate=null, finishDate=null]], id=3228005375174201039]], id=155781065730623869]

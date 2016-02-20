@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <checkstyle version="5.9">
-<file name="D:\trainings\jmp2015-2016\workspace\TaskManager\src\test\java\com\epam\jmp\taskmanager\data\dao\TestSimulator.java">
+<file name="D:\trainings\jmp2015-2016\workspace\Aliaksei-Chynayeu-Group-2-2015-2016\TaskManager\src\test\java\com\epam\jmp\taskmanager\data\dao\TestSimulator.java">
 <error line="0" severity="error" message="File does not end with a newline." source="com.puppycrawl.tools.checkstyle.checks.NewlineAtEndOfFileCheck"/>
 <error line="0" severity="error" message="Missing package-info.java file." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocPackageCheck"/>
 <error line="11" column="1" severity="error" message="Line contains a tab character." source="com.puppycrawl.tools.checkstyle.checks.whitespace.FileTabCharacterCheck"/>

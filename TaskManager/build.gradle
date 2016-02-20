@@ -18,12 +18,12 @@ dependencies {
 	compile 'com.puppycrawl.tools:checkstyle:6.15' 
 } 
 
-task appJar (type: Jar, dependsOn: classes) { 
-	from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } } 
-		manifest { 
-			attributes 'Main-Class': 'com.epam.jmp.taskmanager.run.App' 
-		} 
-} 
+jar {
+	from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    manifest {
+     	attributes 'Main-Class': 'com.epam.jmp.taskmanager.run.App'
+    }
+}
 
 tasks.withType(Checkstyle) {
     configFile = rootProject.file("config/checkstyle/sun.xml");
@@ -87,8 +87,8 @@ task appJavaDoc(type: Javadoc) {
 	destinationDir = rootProject.file("reports/javadoc")
 }
 
-build.dependsOn appJar
-appJar.dependsOn appJacocoTestReport
+build.dependsOn jar
+jar.dependsOn appJacocoTestReport
 appJacocoTestReport.dependsOn findbugsSecurity
 test.dependsOn classes
 build.dependsOn appJavaDoc

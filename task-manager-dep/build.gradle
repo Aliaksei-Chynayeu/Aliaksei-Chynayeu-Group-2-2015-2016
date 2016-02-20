@@ -1,0 +1,73 @@
+apply plugin: 'java'
+apply plugin: 'eclipse' 
+ 
+task copyApplicationJars (type: Copy) {
+	from project.file('src/main/resources/libs')
+	into project.file('temp/jarsOutputDir')
+}
+task copyApplicationStoreXml(type: Copy) {
+	from project.file('src/main/resources/store')
+	into project.file('temp/jarsOutputDir/store')
+}
+
+build.dependsOn copyApplicationJars, copyApplicationStoreXml
+
+allprojects {
+	apply plugin: 'java'
+	build.doLast {
+		delete  "${projectDir}/build"
+	}
+	clean.doFirst {
+		delete  "${projectDir}/reports",
+				"${projectDir}/temp",
+				"${projectDir}/build",
+				"${projectDir}/bin"
+	}
+}
+
+
+subprojects {
+
+	dependencies { 
+		compile fileTree(dir: './src/main/resources/libs', include: ['*.jar'])
+		compile 'com.puppycrawl.tools:checkstyle:6.15' 
+	}
+
+	apply plugin: 'application' 
+
+	mainClassName = "com.epam.jmp.taskmanager.run.App"
+
+    sourceCompatibility = 1.6
+
+	repositories {
+		mavenCentral()
+	}
+	
+	
+	buildDir = rootProject.file("./temp/build/$project.name/build")
+
+	sourceSets {
+		main {
+			output.classesDir = rootProject.file("./temp/build/classes/main")
+			output.resourcesDir = rootProject.file("./temp/build/resources/main")
+			resources { 
+				srcDirs 'src/main/resources'
+				exclude 'libs/**'
+				exclude 'store/**'
+			}
+		}
+		test {
+			output.classesDir = rootProject.file("./temp/build/classes/test")
+			output.resourcesDir = rootProject.file("./temp/build/resources/test")
+		}
+	}
+	
+	jar {
+	    destinationDir = rootProject.file("./temp/jarsOutputDir")
+	}
+	
+	
+	build.doLast {
+		delete "${projectDir}/build"
+	}
+}

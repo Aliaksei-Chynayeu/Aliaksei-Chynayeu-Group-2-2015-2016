@@ -1,0 +1,10 @@
+dependencies {
+	compile project(':task-manager-core'),
+			project(':task-manager-business-logic')
+}
+
+jar {
+	manifest { 
+		attributes ('Class-Path': configurations.compile.collect { it.getName() }.join(' '))
+	} 
+}

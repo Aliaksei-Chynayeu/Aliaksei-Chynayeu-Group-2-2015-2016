@@ -1,0 +1,12 @@
+dependencies {
+	compile project(':task-manager-business-logic'), 
+			project(':task-manager-dao')
+}
+jar {
+	manifest { 
+		attributes ('Main-Class': 'com.epam.jmp.taskmanager.run.App' ,
+				   'Class-Path': configurations.compile.collect { it.getName() }.join(' ') )
+	}
+}
+
+ 
