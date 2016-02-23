@@ -1,21 +1,24 @@
 apply plugin: 'java'
 apply plugin: 'eclipse' 
- 
-task copyApplicationJars (type: Copy) {
-	from project.file('src/main/resources/libs')
-	into project.file('temp/jarsOutputDir')
-}
-task copyApplicationStoreXml(type: Copy) {
-	from project.file('src/main/resources/store')
-	into project.file('temp/jarsOutputDir/store')
-}
-
-build.dependsOn copyApplicationJars, copyApplicationStoreXml
 
 allprojects {
 	apply plugin: 'java'
+	
 	build.doLast {
-		delete  "${projectDir}/build"
+		copy {
+			from project.file('src/main/resources/store')
+			into project.file('temp/jarsOutputDir/store')
+		}
+		copy {
+			from project.file('build/libs')
+			into rootProject.file('./temp/jarsOutputDir')
+		}
+		copy {
+			from configurations.runtime
+			into rootProject.file('temp/jarsOutputDir')
+		}
+		delete  "${projectDir}/build",
+				"${projectDir}/resources"
 	}
 	clean.doFirst {
 		delete  "${projectDir}/reports",
@@ -23,51 +26,62 @@ allprojects {
 				"${projectDir}/build",
 				"${projectDir}/bin"
 	}
+
 }
 
-
 subprojects {
-
-	dependencies { 
-		compile fileTree(dir: './src/main/resources/libs', include: ['*.jar'])
-		compile 'com.puppycrawl.tools:checkstyle:6.15' 
+	
+	repositories {
+		mavenCentral()
 	}
 
-	apply plugin: 'application' 
+	apply plugin: 'application'
 
 	mainClassName = "com.epam.jmp.taskmanager.run.App"
 
     sourceCompatibility = 1.6
 
-	repositories {
-		mavenCentral()
-	}
+	dependencies {
+    	compile 'com.puppycrawl.tools:checkstyle:6.15' 
+    	compile 'org.apache.commons:commons-lang3:3.0'
+    	compile 'org.hamcrest:hamcrest-all:1.1'
+    	compile 'javax.xml.bind:jaxb-api:2.2.2'
+    	compile 'com.sun.xml.bind:jaxb-impl:2.0.1'
+    	compile 'junit:junit:4.12'
+    	compile 'log4j:log4j:1.2.17'
+    }
 	
-	
-	buildDir = rootProject.file("./temp/build/$project.name/build")
 
 	sourceSets {
 		main {
-			output.classesDir = rootProject.file("./temp/build/classes/main")
-			output.resourcesDir = rootProject.file("./temp/build/resources/main")
 			resources { 
-				srcDirs 'src/main/resources'
-				exclude 'libs/**'
+				srcDirs rootProject.file("./src/main/resources")	
 				exclude 'store/**'
 			}
 		}
-		test {
-			output.classesDir = rootProject.file("./temp/build/classes/test")
-			output.resourcesDir = rootProject.file("./temp/build/resources/test")
-		}
 	}
-	
-	jar {
-	    destinationDir = rootProject.file("./temp/jarsOutputDir")
-	}
-	
 	
 	build.doLast {
-		delete "${projectDir}/build"
+		copy {
+			from configurations.runtime
+			into rootProject.file('./temp/jarsOutputDir')
+		}
+	}
+
+	
+	test {
+		ignoreFailures = true
+		reports { 
+			junitXml.enabled = false 
+			html.enabled = true 
+		} 
 	}
 }
+
+
+task appTestReport(type: TestReport) {
+    destinationDir = file("reports/testReport")
+    reportOn subprojects*.test
+}
+
+build.dependsOn appTestReport
