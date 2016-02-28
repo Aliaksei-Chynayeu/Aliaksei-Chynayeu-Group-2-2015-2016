@@ -21,23 +21,23 @@ public abstract class AbstractDAO<T, S>  implements DAOImpl<T>{
 	/** logger */
 	private static final Logger LOG = Logger.getLogger(AbstractDAO.class);
 	/** connections pool instance */
-	private IPool<S> connectionPool;
+	private IPool<S> pool;
 
-	public IPool<S> getConnectionPool() {
-		return connectionPool;
+	public IPool<S> getPool() {
+		return pool;
 	}
 
 	/**
 	 * Sets connections pool
 	 * 
-	 * @param connectionPool
+	 * @param pool
 	 *            the connections pool to set
 	 * @throws ConnectionPoolException
 	 */
-	public void setPool(IPool<S> connectionPool)
+	public void setPool(IPool<S> pool)
 			throws ConnectionPoolException {
-		this.connectionPool = connectionPool;
-		LOG.info("Pool was setted - " + connectionPool.getClass().getName());
+		this.pool = pool;
+		LOG.info("Pool was setted - " + pool.getClass().getName());
 	}
 
 	/**
@@ -51,8 +51,8 @@ public abstract class AbstractDAO<T, S>  implements DAOImpl<T>{
 		S connection = null;
 		try {
 
-			connection = this.getConnectionPool().takeConnection();
-		} catch (ConnectionPoolException e) {
+			connection = this.getPool().takeConnection();
+		} catch (Exception e) {
 			throw new TechnicalDAOException(e);
 		}
 		LOG.info("Connection was taken.");
@@ -68,8 +68,8 @@ public abstract class AbstractDAO<T, S>  implements DAOImpl<T>{
 	protected void releaseConnection(S connection) throws TechnicalDAOException {
 		try {
 			LOG.info("Trying to release connection.");
-			this.getConnectionPool().releaseConnection(connection);
-		} catch (ConnectionPoolException e) {
+			this.getPool().releaseConnection(connection);
+		} catch (Exception e) {
 			throw new TechnicalDAOException(e);
 		}
 		LOG.info("Connection was released");

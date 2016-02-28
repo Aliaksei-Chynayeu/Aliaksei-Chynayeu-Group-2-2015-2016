@@ -1,7 +1,5 @@
 package com.epam.jmp.taskmanager.data.pool;
 
-import java.io.Closeable;
-import java.sql.Connection;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.locks.Lock;
@@ -25,9 +23,11 @@ public abstract class AbstractPool<S> implements IPool<S> {
 	 */
 	private static final Logger LOG = Logger.getLogger(AbstractPool.class);
 	/** Object of BlockingQueue class with queue of free connections */
-	protected BlockingQueue<S> freeConnections;
+	private BlockingQueue<S> freeConnections;
+	
+
 	/** Object of BlockingQueue class with queue of busy connections */
-	protected BlockingQueue<S> busyConnections;
+	private BlockingQueue<S> busyConnections;
 	/** database driver name */
 	private String driver;
 	/** databese url */
@@ -46,7 +46,7 @@ public abstract class AbstractPool<S> implements IPool<S> {
 	/**
 	 * Getter for the url field
 	 * 
-	 * @return teh url
+	 * @return the url to return
 	 */
 	public String getUrl() {
 		return url;
@@ -141,6 +141,33 @@ public abstract class AbstractPool<S> implements IPool<S> {
 	 */
 	public abstract void initPool() throws ConnectionPoolException;
 
+	/**
+	 * @return the freeConnections
+	 */
+	protected BlockingQueue<S> getFreeConnections() {
+		return freeConnections;
+	}
+
+	/**
+	 * @return the busyConnections
+	 */
+	protected BlockingQueue<S> getBusyConnections() {
+		return busyConnections;
+	}
+	
+	/**
+	 * @param freeConnections the freeConnections to set
+	 */
+	protected void setFreeConnections(BlockingQueue<S> freeConnections) {
+		this.freeConnections = freeConnections;
+	}
+
+	/**
+	 * @param busyConnections the busyConnections to set
+	 */
+	protected void setBusyConnections(BlockingQueue<S> busyConnections) {
+		this.busyConnections = busyConnections;
+	}
 
 	/**
 	 * Gives connection
@@ -152,9 +179,9 @@ public abstract class AbstractPool<S> implements IPool<S> {
 	public S takeConnection() throws ConnectionPoolException {
 		S connection = null;
 		try {
-			connection = freeConnections.take();
-			busyConnections.put(connection);
-		} catch (InterruptedException e) {
+			connection = getFreeConnections().take();
+			getBusyConnections().put(connection);
+		} catch (Exception e) {
 			throw new ConnectionPoolException(e);
 		}
 		return connection;
@@ -171,9 +198,9 @@ public abstract class AbstractPool<S> implements IPool<S> {
 	public void releaseConnection(S connection)
 			throws ConnectionPoolException {
 		try {
-			busyConnections.remove(connection);
-			freeConnections.put(connection);
-		} catch (InterruptedException e) {
+			getBusyConnections().remove(connection);
+			getFreeConnections().put(connection);
+		} catch (Exception e) {
 			throw new ConnectionPoolException("Can't release connection", e);
 
 		}

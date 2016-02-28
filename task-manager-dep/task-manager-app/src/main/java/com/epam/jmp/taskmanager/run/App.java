@@ -32,8 +32,7 @@ public class App {
 		LOG.info("Read from file " + path);
 		// path for eclipse run
 		// String path = "src\\main\\resources\\store\\TaskStore.xml";
-		FilePool.getInstance().setPoolSize(
-				FilePool.getInstance().FILE_POOL_SIZE);
+		FilePool.getInstance().setPoolSize(FilePool.FILE_POOL_SIZE);
 		FilePool.getInstance().setUrl(path);
 		FilePool.getInstance().initPool();
 

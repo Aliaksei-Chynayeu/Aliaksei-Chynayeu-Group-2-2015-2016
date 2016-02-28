@@ -33,12 +33,14 @@ public class FileDAO extends AbstractDAO<TaskStore, File> {
 		try {
 			sw = JAXBUtil.marshall(taskStore, TaskStore.class);
 			FileUtil.writeToFile(sw, file);
-		} catch (TechnicalException e) {
+		} catch (Exception e) {
 			throw new TechnicalDAOException(e);
 		} finally {
 			try {
-				sw.close();
-			} catch (IOException e) {
+				if (sw != null) {
+					sw.close();
+				}
+			} catch (Exception e) {
 				throw new TechnicalDAOException(e);
 			}
 			this.releaseConnection(file);

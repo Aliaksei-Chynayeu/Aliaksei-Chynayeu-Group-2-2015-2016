@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.StringWriter;
 
 import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
@@ -20,7 +19,7 @@ public class JAXBUtil {
 	/**
 	 * Constructor
 	 */
-	public JAXBUtil() {
+	private JAXBUtil() {
 	}
 
 	/**
@@ -37,12 +36,16 @@ public class JAXBUtil {
 	public static <T extends Object> T unmarshall(Class<T> typeParameter,
 			File file) throws TechnicalException {
 		T result = null;
-		try {
-			JAXBContext jaxbContext = JAXBContext.newInstance(typeParameter);
-			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
-			result = (T) jaxbUnmarshaller.unmarshal(file);
-		} catch (JAXBException e) {
-			throw new TechnicalException(e);
+		if (file != null) {
+			try {
+				JAXBContext jaxbContext = JAXBContext
+						.newInstance(typeParameter);
+				Unmarshaller jaxbUnmarshaller = jaxbContext
+						.createUnmarshaller();
+				result = (T) jaxbUnmarshaller.unmarshal(file);
+			} catch (Exception e) {
+				throw new TechnicalException(e);
+			}
 		}
 		return result;
 	}
@@ -59,16 +62,20 @@ public class JAXBUtil {
 	 * @throws TechnicalException
 	 *             in case of exception
 	 */
-	public static <T> StringWriter marshall(T obj, Class<T> typeParameter)
-			throws TechnicalException {
-		StringWriter sw = new StringWriter();
-		try {
-			JAXBContext jaxbContext = JAXBContext.newInstance(typeParameter);
-			Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
-			jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-			jaxbMarshaller.marshal(obj, sw);
-		} catch (JAXBException e) {
-			throw new TechnicalException(e);
+	public static <T> StringWriter marshall(T obj, Class<T> typeParameter) throws TechnicalException {
+		StringWriter sw = null;
+		if (obj != null) {
+			try {
+				sw= new StringWriter();
+				JAXBContext jaxbContext = JAXBContext
+						.newInstance(typeParameter);
+				Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
+				jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT,
+						true);
+				jaxbMarshaller.marshal(obj, sw);
+			} catch (Exception e) {
+				throw new TechnicalException(e);
+			}
 		}
 		return sw;
 	}

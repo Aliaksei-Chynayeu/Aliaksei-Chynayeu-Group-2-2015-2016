@@ -1,8 +1,10 @@
 apply plugin: 'java'
 apply plugin: 'eclipse' 
-
+	
 allprojects {
 	apply plugin: 'java'
+	apply plugin: 'base'
+	apply plugin: 'jacoco'
 	
 	build.doLast {
 		copy {
@@ -26,7 +28,9 @@ allprojects {
 				"${projectDir}/build",
 				"${projectDir}/bin"
 	}
-
+    jacoco {
+        toolVersion = '0.7.1.201405082137'
+    }
 }
 
 subprojects {
@@ -47,8 +51,9 @@ subprojects {
     	compile 'org.hamcrest:hamcrest-all:1.1'
     	compile 'javax.xml.bind:jaxb-api:2.2.2'
     	compile 'com.sun.xml.bind:jaxb-impl:2.0.1'
-    	compile 'junit:junit:4.12'
     	compile 'log4j:log4j:1.2.17'
+    	compile 'org.powermock:powermock-mockito-release-full:1.6.1'
+    	compile 'com.mockrunner:mockrunner-jdbc:1.0.4'
     }
 	
 
@@ -76,12 +81,38 @@ subprojects {
 			html.enabled = true 
 		} 
 	}
+    
+	jacocoTestReport {
+        reports {
+            html.enabled = true
+            xml.enabled = true
+            csv.enabled = false
+        }
+    }	
 }
-
 
 task appTestReport(type: TestReport) {
     destinationDir = file("reports/testReport")
     reportOn subprojects*.test
 }
 
-build.dependsOn appTestReport
+//task appJavadocs(type: Javadoc) {
+//   source subprojects.collect {project -> project.sourceSets.main.allJava }
+//   classpath = files(subprojects.collect {project -> project.sourceSets.main.compileClasspath})
+//   destinationDir = file("reports/javadoc")
+//}
+
+task jacocoRootReport(type: org.gradle.testing.jacoco.tasks.JacocoReport) {
+    dependsOn = subprojects.test
+    sourceDirectories = files(subprojects.sourceSets.main.allSource.srcDirs)
+    classDirectories =  files(subprojects.sourceSets.main.output)
+    executionData = files(subprojects.jacocoTestReport.executionData)
+    reports {
+        html.enabled = true
+        xml.enabled = false
+        csv.enabled = false
+        html.destination "reports/jacoco/jacocoHtml"
+    }
+}
+
+build.dependsOn appTestReport, /*appJavadocs,*/ jacocoRootReport

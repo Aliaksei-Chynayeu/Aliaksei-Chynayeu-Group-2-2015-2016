@@ -1,5 +1,6 @@
 package com.epam.jmp.taskmanager.data.pool;
 
+import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -61,11 +62,11 @@ public final class ConnectionPool extends AbstractPool<Connection>{
     public void initPool() throws ConnectionPoolException {
         try {
             Class.forName(getDriver());
-            freeConnections = new ArrayBlockingQueue<Connection>(getPoolSize());
-            busyConnections = new ArrayBlockingQueue<Connection>(getPoolSize());
+			setFreeConnections(new ArrayBlockingQueue<Connection>(getPoolSize()));
+			setBusyConnections(new ArrayBlockingQueue<Connection>(getPoolSize()));
             for (int i = 0; i < getPoolSize(); i++) {
                 Connection connection = DriverManager.getConnection(getUrl(), getUser(), getPassword());
-                freeConnections.add(connection);
+                getFreeConnections().add(connection);
             }
         } catch (ClassNotFoundException e) {
             throw new ConnectionPoolException("Driver  is wrong", e);
@@ -99,11 +100,11 @@ public final class ConnectionPool extends AbstractPool<Connection>{
 	private void clearConnectionQueue() throws ConnectionPoolException {
 		try {
 			Connection connection;
-			while ((connection = freeConnections.poll()) != null) {
+			while ((connection = getFreeConnections().poll()) != null) {
 				connection.close();
 				;
 			}
-			while ((connection = busyConnections.poll()) != null) {
+			while ((connection = getBusyConnections().poll()) != null) {
 				connection.close();
 			}
 		} catch (Exception e) {

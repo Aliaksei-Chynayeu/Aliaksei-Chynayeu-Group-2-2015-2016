@@ -1,9 +1,7 @@
 package com.epam.jmp.taskmanager.util;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileWriter;
-import java.io.IOException;
 import java.io.StringWriter;
 import java.util.Scanner;
 
@@ -19,7 +17,7 @@ public class FileUtil {
 	/**
 	 * Constructor
 	 */
-	public FileUtil() {
+	private FileUtil() {
 	}
 
 	/**
@@ -29,19 +27,22 @@ public class FileUtil {
 	 * @param file
 	 * @throws TechnicalException
 	 */
-	public static void writeToFile(StringWriter sw, File file)
-			throws TechnicalException {
+	public static void writeToFile(StringWriter sw, File file) throws TechnicalException {
 		FileWriter fw = null;
-		try {
-			fw = new FileWriter(file);
-			fw.write(sw.toString());
-		} catch (IOException e) {
-			throw new TechnicalException(e);
-		} finally {
+		if (sw != null && sw != null) {
 			try {
-				fw.close();
-			} catch (IOException e) {
+				fw = new FileWriter(file);
+				fw.write(sw.toString());
+			} catch (Exception e) {
 				throw new TechnicalException(e);
+			} finally {
+				try {
+					if (fw != null) {
+						fw.close();
+					}
+				} catch (Exception e) {
+					throw new TechnicalException(e);
+				}
 			}
 		}
 	}
@@ -50,20 +51,26 @@ public class FileUtil {
 	 * Read form file
 	 * 
 	 * @param file
-	 * @return
+	 * @return StringBuilder
 	 * @throws TechnicalException
 	 */
-	public static StringBuilder readFormFile(File file)
-			throws TechnicalException {
-		StringBuilder sb = new StringBuilder();
-		try {
-			Scanner scanner = new Scanner(file);
-			while (scanner.hasNextLine()) {
-				sb.append(scanner.nextLine());
+	public static StringBuilder readFormFile(File file) throws TechnicalException {
+		StringBuilder sb = null;
+		Scanner scanner = null;
+		if (file != null) {
+			try {
+				sb = new StringBuilder();
+				scanner = new Scanner(file);
+				while (scanner.hasNextLine()) {
+					sb.append(scanner.nextLine());
+				}
+			} catch (Exception e) {
+				throw new TechnicalException(e);
+			} finally {
+				if (scanner != null) {
+					scanner.close();
+				}
 			}
-			scanner.close();
-		} catch (FileNotFoundException e) {
-			throw new TechnicalException(e);
 		}
 		return sb;
 	}

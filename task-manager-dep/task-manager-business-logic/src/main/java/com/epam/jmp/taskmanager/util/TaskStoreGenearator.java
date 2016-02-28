@@ -18,7 +18,7 @@ public class TaskStoreGenearator {
 	/**
 	 * Empty constructor
 	 */
-	public TaskStoreGenearator() {
+	private TaskStoreGenearator() {
 	}
 
 	/**

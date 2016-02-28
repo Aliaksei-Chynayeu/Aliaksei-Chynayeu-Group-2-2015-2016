@@ -1,0 +1,89 @@
+INFO  2016-02-24 07:03:35,062 [main][App.java:32] : Read from file store//TaksStore.xml
+INFO  2016-02-24 07:03:35,092 [main][AbstractDAO.java:40] : Pool was setted - com.epam.jmp.taskmanager.data.pool.FilePool
+INFO  2016-02-24 07:03:35,092 [main][FileThread.java:37] : Thread #1 was created
+INFO  2016-02-24 07:03:35,092 [Thread-1][FileThread.java:45] : Thread1 was started.
+INFO  2016-02-24 07:03:35,092 [main][App.java:48] : Thread #1 was created with TaskStore : TaskStore [taskList=[TaskList [tasks=[Task [id=5451961146643956089, name=HNlVwqaPgj, description=qvVelwLwSX, assignedUsers=[], deadline=null, startDate=null, finishDate=null], Task [id=5932876353266025888, name=adXWdhkzHA, description=BQejrTqOdi, assignedUsers=[], deadline=null, startDate=null, finishDate=null]], id=3370144085830311422], TaskList [tasks=[Task [id=3293073138158306583, name=zpVBvOPZgM, description=UGtusaNGuS, assignedUsers=[], deadline=null, startDate=null, finishDate=null], Task [id=6236735947380765273, name=CqTjriCGbl, description=LShVnUOKUH, assignedUsers=[], deadline=null, startDate=null, finishDate=null], Task [id=1381280848573931324, name=avuYhbzGIS, description=rrDTfnpsXR, assignedUsers=[], deadline=null, startDate=null, finishDate=null]], id=1324562794353598422]], id=1248541468674124991]
+INFO  2016-02-24 07:03:35,092 [Thread-1][FileThread.java:46] : Thread1 is waiting to proceed.
+INFO  2016-02-24 07:03:35,092 [main][FileThread.java:37] : Thread #2 was created
+INFO  2016-02-24 07:03:35,092 [Thread-2][FileThread.java:45] : Thread2 was started.
+INFO  2016-02-24 07:03:35,092 [main][App.java:48] : Thread #2 was created with TaskStore : TaskStore [taskList=[TaskList [tasks=[Task [id=6753589710094706855, name=DBilqUMkgg, description=WYUzFIURow, assignedUsers=[], deadline=null, startDate=null, finishDate=null], Task [id=8252814428582752888, name=tEUhyttLAj, description=kVBSCLlCZC, assignedUsers=[], deadline=null, startDate=null, finishDate=null]], id=4202049750642490916], TaskList [tasks=[Task [id=6990421448890755870, name=WCuEfNtSoA, description=rmAdSrNeJj, assignedUsers=[], deadline=null, startDate=null, finishDate=null], Task [id=8643794953071828573, name=DVXyUOglYo, description=rWgaWAjcig, assignedUsers=[], deadline=null, startDate=null, finishDate=null], Task [id=7043235116333108997, name=gUuzZhZtMe, description=bdkVgDMxcy, assignedUsers=[], deadline=null, startDate=null, finishDate=null]], id=1269258768013967337]], id=2539716717185225941]
+INFO  2016-02-24 07:03:35,092 [Thread-2][FileThread.java:46] : Thread2 is waiting to proceed.
+INFO  2016-02-24 07:03:35,112 [main][FileThread.java:37] : Thread #3 was created
+INFO  2016-02-24 07:03:35,112 [main][App.java:48] : Thread #3 was created with TaskStore : TaskStore [taskList=[TaskList [tasks=[Task [id=6246914361211865183, name=OxNZpXIfPO, description=TpTOuFfQWn, assignedUsers=[], deadline=null, startDate=null, finishDate=null], Task [id=7985864020594537157, name=EJlbWiiEcK, description=dkxliVgGHF, assignedUsers=[], deadline=null, startDate=null, finishDate=null]], id=1675356926360856204], TaskList [tasks=[Task [id=7843618769897409102, name=AWYJyXlMZZ, description=NemQjlrMeG, assignedUsers=[], deadline=null, startDate=null, finishDate=null], Task [id=735291014649853283, name=YmUsQBxzUP, description=lqcCUcSLHs, assignedUsers=[], deadline=null, startDate=null, finishDate=null], Task [id=8406121478046903008, name=QMsTZbhBTs, description=mxlXUPkgAa, assignedUsers=[], deadline=null, startDate=null, finishDate=null]], id=1546986759217433859]], id=4067024772762291489]
+INFO  2016-02-24 07:03:35,112 [Thread-3][FileThread.java:45] : Thread3 was started.
+INFO  2016-02-24 07:03:35,132 [Thread-3][FileThread.java:46] : Thread3 is waiting to proceed.
+INFO  2016-02-24 07:03:35,132 [main][FileThread.java:37] : Thread #4 was created
+INFO  2016-02-24 07:03:35,132 [main][App.java:48] : Thread #4 was created with TaskStore : TaskStore [taskList=[TaskList [tasks=[Task [id=4653236301310532580, name=hubWkgjXcP, description=BIjjjBbimn, assignedUsers=[], deadline=null, startDate=null, finishDate=null], Task [id=7755223247265459762, name=ZXHqtmdqML, description=SDRUSfuwIr, assignedUsers=[], deadline=null, startDate=null, finishDate=null]], id=6865559781723494553], TaskList [tasks=[Task [id=5408529659127627372, name=lFMGUrviGM, description=BYTclnAqYZ, assignedUsers=[], deadline=null, startDate=null, finishDate=null], Task [id=5557287968775176968, name=giXzfHJorJ, description=DRhaVnMdeG, assignedUsers=[], deadline=null, startDate=null, finishDate=null], Task [id=2025798150305250589, name=ZtAyQlqchL, description=CpCLbbLUxW, assignedUsers=[], deadline=null, startDate=null, finishDate=null]], id=6671654499143930062]], id=5519873190308951890]
+INFO  2016-02-24 07:03:35,132 [Thread-4][FileThread.java:45] : Thread4 was started.
+INFO  2016-02-24 07:03:35,152 [Thread-4][FileThread.java:46] : Thread4 is waiting to proceed.
+INFO  2016-02-24 07:03:35,152 [main][FileThread.java:37] : Thread #5 was created
+INFO  2016-02-24 07:03:35,152 [main][App.java:55] : Thread #5 was created to read file
+INFO  2016-02-24 07:03:35,152 [Thread-5][FileThread.java:45] : Thread5 was started.
+INFO  2016-02-24 07:03:35,152 [Thread-5][FileThread.java:46] : Thread5 is waiting to proceed.
+INFO  2016-02-24 07:03:35,152 [main][FileThread.java:37] : Thread #6 was created
+INFO  2016-02-24 07:03:35,182 [main][App.java:55] : Thread #6 was created to read file
+INFO  2016-02-24 07:03:35,182 [main][FileThread.java:37] : Thread #7 was created
+INFO  2016-02-24 07:03:35,182 [Thread-6][FileThread.java:45] : Thread6 was started.
+INFO  2016-02-24 07:03:35,182 [Thread-6][FileThread.java:46] : Thread6 is waiting to proceed.
+INFO  2016-02-24 07:03:35,182 [main][App.java:55] : Thread #7 was created to read file
+INFO  2016-02-24 07:03:35,182 [Thread-7][FileThread.java:45] : Thread7 was started.
+INFO  2016-02-24 07:03:35,192 [Thread-7][FileThread.java:46] : Thread7 is waiting to proceed.
+INFO  2016-02-24 07:03:35,192 [main][FileThread.java:37] : Thread #8 was created
+INFO  2016-02-24 07:03:35,192 [main][App.java:55] : Thread #8 was created to read file
+INFO  2016-02-24 07:03:35,192 [Thread-8][FileThread.java:45] : Thread8 was started.
+INFO  2016-02-24 07:03:35,192 [main][FileThread.java:37] : Thread #9 was created
+INFO  2016-02-24 07:03:35,192 [Thread-8][FileThread.java:46] : Thread8 is waiting to proceed.
+INFO  2016-02-24 07:03:35,202 [Thread-9][FileThread.java:45] : Thread9 was started.
+INFO  2016-02-24 07:03:35,202 [main][App.java:55] : Thread #9 was created to read file
+INFO  2016-02-24 07:03:35,202 [Thread-9][FileThread.java:46] : Thread9 is waiting to proceed.
+INFO  2016-02-24 07:03:35,202 [Thread-2][FileWriterThread.java:44] : Thread2 is running.
+INFO  2016-02-24 07:03:35,202 [Thread-1][FileWriterThread.java:44] : Thread1 is running.
+INFO  2016-02-24 07:03:35,202 [Thread-2][AbstractDAO.java:58] : Connection was taken.
+INFO  2016-02-24 07:03:35,202 [Thread-8][FileReaderThread.java:43] : Thread #8 is running.
+INFO  2016-02-24 07:03:35,202 [Thread-7][FileReaderThread.java:43] : Thread #7 is running.
+INFO  2016-02-24 07:03:35,202 [Thread-6][FileReaderThread.java:43] : Thread #6 is running.
+INFO  2016-02-24 07:03:35,202 [Thread-5][FileReaderThread.java:43] : Thread #5 is running.
+INFO  2016-02-24 07:03:35,202 [Thread-4][FileWriterThread.java:44] : Thread4 is running.
+INFO  2016-02-24 07:03:35,202 [Thread-3][FileWriterThread.java:44] : Thread3 is running.
+INFO  2016-02-24 07:03:35,202 [Thread-9][FileReaderThread.java:43] : Thread #9 is running.
+INFO  2016-02-24 07:03:35,372 [Thread-2][AbstractDAO.java:70] : Trying to release connection.
+INFO  2016-02-24 07:03:35,372 [Thread-2][AbstractDAO.java:75] : Connection was released
+INFO  2016-02-24 07:03:35,372 [Thread-1][AbstractDAO.java:58] : Connection was taken.
+INFO  2016-02-24 07:03:35,382 [Thread-1][AbstractDAO.java:70] : Trying to release connection.
+INFO  2016-02-24 07:03:35,382 [Thread-1][AbstractDAO.java:75] : Connection was released
+INFO  2016-02-24 07:03:35,382 [Thread-8][AbstractDAO.java:58] : Connection was taken.
+INFO  2016-02-24 07:03:35,402 [Thread-8][AbstractDAO.java:70] : Trying to release connection.
+INFO  2016-02-24 07:03:35,402 [Thread-8][AbstractDAO.java:75] : Connection was released
+INFO  2016-02-24 07:03:35,402 [Thread-7][AbstractDAO.java:58] : Connection was taken.
+WARN  2016-02-24 07:03:35,402 [Thread-8][FileReaderThread.java:48] : com.epam.jmp.taskmanager.exception.TechnicalDAOException: com.epam.jmp.taskmanager.exception.TechnicalException: javax.xml.bind.UnmarshalException
+ - with linked exception:
+[java.io.FileNotFoundException: D:\Trainings\jmp2015-2016\workspace\task-manager-dep\task-manager-app\store\TaksStore.xml (The system cannot find the path specified)]
+INFO  2016-02-24 07:03:35,412 [Thread-7][AbstractDAO.java:70] : Trying to release connection.
+INFO  2016-02-24 07:03:35,412 [Thread-7][AbstractDAO.java:75] : Connection was released
+INFO  2016-02-24 07:03:35,412 [Thread-6][AbstractDAO.java:58] : Connection was taken.
+WARN  2016-02-24 07:03:35,412 [Thread-7][FileReaderThread.java:48] : com.epam.jmp.taskmanager.exception.TechnicalDAOException: com.epam.jmp.taskmanager.exception.TechnicalException: javax.xml.bind.UnmarshalException
+ - with linked exception:
+[java.io.FileNotFoundException: D:\Trainings\jmp2015-2016\workspace\task-manager-dep\task-manager-app\store\TaksStore.xml (The system cannot find the path specified)]
+INFO  2016-02-24 07:03:35,422 [Thread-6][AbstractDAO.java:70] : Trying to release connection.
+INFO  2016-02-24 07:03:35,422 [Thread-6][AbstractDAO.java:75] : Connection was released
+WARN  2016-02-24 07:03:35,422 [Thread-6][FileReaderThread.java:48] : com.epam.jmp.taskmanager.exception.TechnicalDAOException: com.epam.jmp.taskmanager.exception.TechnicalException: javax.xml.bind.UnmarshalException
+ - with linked exception:
+[java.io.FileNotFoundException: D:\Trainings\jmp2015-2016\workspace\task-manager-dep\task-manager-app\store\TaksStore.xml (The system cannot find the path specified)]
+INFO  2016-02-24 07:03:35,422 [Thread-5][AbstractDAO.java:58] : Connection was taken.
+INFO  2016-02-24 07:03:35,442 [Thread-5][AbstractDAO.java:70] : Trying to release connection.
+INFO  2016-02-24 07:03:35,442 [Thread-5][AbstractDAO.java:75] : Connection was released
+INFO  2016-02-24 07:03:35,442 [Thread-4][AbstractDAO.java:58] : Connection was taken.
+WARN  2016-02-24 07:03:35,442 [Thread-5][FileReaderThread.java:48] : com.epam.jmp.taskmanager.exception.TechnicalDAOException: com.epam.jmp.taskmanager.exception.TechnicalException: javax.xml.bind.UnmarshalException
+ - with linked exception:
+[java.io.FileNotFoundException: D:\Trainings\jmp2015-2016\workspace\task-manager-dep\task-manager-app\store\TaksStore.xml (The system cannot find the path specified)]
+INFO  2016-02-24 07:03:35,442 [Thread-4][AbstractDAO.java:70] : Trying to release connection.
+INFO  2016-02-24 07:03:35,442 [Thread-4][AbstractDAO.java:75] : Connection was released
+INFO  2016-02-24 07:03:35,442 [Thread-3][AbstractDAO.java:58] : Connection was taken.
+INFO  2016-02-24 07:03:35,452 [Thread-3][AbstractDAO.java:70] : Trying to release connection.
+INFO  2016-02-24 07:03:35,452 [Thread-3][AbstractDAO.java:75] : Connection was released
+INFO  2016-02-24 07:03:35,452 [Thread-9][AbstractDAO.java:58] : Connection was taken.
+INFO  2016-02-24 07:03:35,482 [Thread-9][AbstractDAO.java:70] : Trying to release connection.
+INFO  2016-02-24 07:03:35,482 [Thread-9][AbstractDAO.java:75] : Connection was released
+WARN  2016-02-24 07:03:35,482 [Thread-9][FileReaderThread.java:48] : com.epam.jmp.taskmanager.exception.TechnicalDAOException: com.epam.jmp.taskmanager.exception.TechnicalException: javax.xml.bind.UnmarshalException
+ - with linked exception:
+[java.io.FileNotFoundException: D:\Trainings\jmp2015-2016\workspace\task-manager-dep\task-manager-app\store\TaksStore.xml (The system cannot find the path specified)]

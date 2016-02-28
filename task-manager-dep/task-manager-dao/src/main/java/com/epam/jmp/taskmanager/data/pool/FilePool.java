@@ -61,11 +61,10 @@ public final class FilePool extends AbstractPool<File> {
 	 */
 	public void initPool() throws ConnectionPoolException {
 		try {
-			
-			freeConnections = new ArrayBlockingQueue<File>(getPoolSize());
-			busyConnections = new ArrayBlockingQueue<File>(getPoolSize());
+			setFreeConnections(new ArrayBlockingQueue<File>(getPoolSize()));
+			setBusyConnections(new ArrayBlockingQueue<File>(getPoolSize()));
 			for (int i = 0; i < getPoolSize(); i++) {
-				freeConnections.add(new File(this.getUrl()));
+				getFreeConnections().add(new File(this.getUrl()));
 			}
 		} catch (Exception e) {
 			throw new ConnectionPoolException("Connection is wrong", e);
@@ -96,10 +95,10 @@ public final class FilePool extends AbstractPool<File> {
 	private void clearConnectionQueue() throws ConnectionPoolException {
 		try {
 			File file;
-			while ((file = freeConnections.poll()) != null) {
+			while ((file = getFreeConnections().poll()) != null) {
 				file = null;
 			}
-			while ((file = busyConnections.poll()) != null) {
+			while ((file = getBusyConnections().poll()) != null) {
 				file = null;
 			}
 		} catch (Exception e) {
