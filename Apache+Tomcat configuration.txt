@@ -1,0 +1,31 @@
+1) Download an appropriate version of mod_jk.so for your Apache.
+
+2) Copy in your Apache directory.
+
+3) Upload mod_jk.so module with 'LoadModule jk_module modules/mod_jk.so' in httpd.conf file.
+
+4) Create file mod_jk.conf and include it into httpd.conf file with 'Include conf/extra/mod_jk.conf' (here mod_jk.conf in place into /extra folder).
+
+5) Update mod_jk.conf with 
+<IfModule mod_jk.c>
+	JWorkersFile conf/extra/workers.properties
+	JkMount  /MyApplication/* myapplicationworker
+</IfModule>
+
+Where in werver.xml file from tomcat setted next connector
+<Context docBase="MyApplication" path="/MyApplication" .../>
+
+6) Update worker.properties with
+worker.list=myapplicationworker
+worker.ajp13.port=8009
+worker.ajp13.host=localhost
+worker.ajp13.type=ajp13
+
+Where worker.ajp13.port and worker.ajp13.type are taken from server.xml file from Tomcat
+<Connector port="8009" protocol="AJP/1.3" redirectPort="8443"/>
+
+7) Set Alias folder with static content
+Alias /MyApplication "path to static content here"
+<Directory "d:\MUI\00005785\src\java">
+	#Some options can be places here
+</Directory>
