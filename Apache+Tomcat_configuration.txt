@@ -27,5 +27,5 @@ Where worker.ajp13.port and worker.ajp13.type are taken from server.xml file fro
 7) Set Alias folder with static content
 Alias /MyApplication "path to static content here"
 <Directory "d:\MUI\00005785\src\java">
-	#Some options can be places here
+	#Some options can be placed here
 </Directory>
