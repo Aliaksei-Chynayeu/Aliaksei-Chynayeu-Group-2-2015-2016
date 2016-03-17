@@ -55,6 +55,7 @@ subprojects {
     	compile 'org.powermock:powermock-mockito-release-full:1.6.1'
     	compile 'com.mockrunner:mockrunner-jdbc:1.0.4'
     	compile 'org.glassfish.jersey.media:jersey-media-json-jackson:2.14'
+    	compile 'org.glassfish.jersey.media:jersey-media-multipart:2.14'
     	compile 'javax.servlet:javax.servlet-api:3.0.1'
     }
 	
