@@ -1,0 +1,14 @@
+dependencies {
+	compile project(':task-manager-core'), 
+			project(':task-manager-dao')
+}
+
+jar {
+	manifest { 
+		attributes ('Class-Path': configurations.compile.collect { it.getName() }.join(' '))
+	} 
+}
+
+
+
+ 

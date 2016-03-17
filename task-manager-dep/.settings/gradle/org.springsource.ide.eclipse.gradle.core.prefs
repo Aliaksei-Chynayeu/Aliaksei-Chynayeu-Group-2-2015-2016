@@ -1,0 +1,5 @@
+#org.springsource.ide.eclipse.gradle.core.preferences.GradleProjectPreferences
+#Thu Mar 17 10:52:50 VET 2016
+build.family.org.gradle.tooling.model.eclipse.HierarchicalEclipseProject=;task-manager-app;task-manager-business-logic;task-manager-core;task-manager-dao;
+org.springsource.ide.eclipse.gradle.linkedresources=
+org.springsource.ide.eclipse.gradle.rootprojectloc=
