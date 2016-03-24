@@ -1,0 +1,5 @@
+include ":task-manager-dao", 
+		":task-manager-business-logic", 
+		":task-manager-app", 
+		":task-manager-core",
+		":task-manager-service"
