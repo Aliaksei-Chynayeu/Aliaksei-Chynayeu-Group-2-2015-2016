@@ -59,6 +59,13 @@ subprojects {
     	compile 'javax.servlet:javax.servlet-api:3.0.1'
     	compile 'org.hibernate:hibernate-core:5.1.0.Final'
     	compile 'javax:javaee-web-api:7.0'
+    	compile 'org.springframework:spring-context:4.2.5.RELEASE'
+    	compile 'org.springframework:spring-core:4.2.5.RELEASE'
+    	compile 'org.springframework:spring-test:4.2.5.RELEASE'
+    	compile 'org.springframework:spring-beans:4.2.5.RELEASE'
+    	compile 'org.springframework:spring-orm:4.2.5.RELEASE'
+    	compile 'commons-dbcp:commons-dbcp:1.4'
+    	compile 'mysql:mysql-connector-java:5.1.6'
     }
 	
 

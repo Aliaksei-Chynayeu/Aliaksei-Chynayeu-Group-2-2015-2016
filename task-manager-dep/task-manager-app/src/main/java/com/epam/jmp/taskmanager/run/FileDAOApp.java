@@ -19,9 +19,9 @@ import com.epam.jmp.taskmanager.util.TaskStoreGenearator;
  * @author Aliaksei_Hlazkou
  * 
  */
-public class App {
+public class FileDAOApp {
 	/** logger */
-	private static final Logger LOG = Logger.getLogger(App.class);
+	private static final Logger LOG = Logger.getLogger(FileDAOApp.class);
 
 	public static void main(String[] args) throws Exception, RuntimeException {
 		// we need to start all threads at the same time. so, we will create

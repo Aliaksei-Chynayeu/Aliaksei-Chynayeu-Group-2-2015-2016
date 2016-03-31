@@ -10,23 +10,22 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
+import org.springframework.context.annotation.Scope;
 
 import com.epam.jmp.taskmanager.data.dao.AbstractDAO;
 import com.epam.jmp.taskmanager.exception.TechnicalDAOException;
 import com.epam.jmp.taskmanager.model.BeanBase;
 
-public class HibernateDAO<T extends BeanBase> extends AbstractDAO<T, Session>{
+public abstract class AbstractHibernateDAO<T extends BeanBase> extends AbstractDAO<T, Session>{
 
 	private Class<T> entityClassType;
 	private SessionFactory sessionFactory;
-	public static final Logger LOG = Logger.getLogger(HibernateDAO.class);
+	public static final Logger LOG = Logger.getLogger(AbstractHibernateDAO.class);
 	
-	public HibernateDAO() {
-		this.init();
+	public AbstractHibernateDAO() {
 	}
 	
-	protected void init(){
-	}
+	protected abstract void init();
 
 	@Override
 	@Transactional(rollbackOn={Exception.class})

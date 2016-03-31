@@ -2,10 +2,12 @@ package com.epam.jmp.taskmanager.data.dao.hibernate;
 
 
 import org.apache.log4j.Logger;
+import org.springframework.context.annotation.Scope;
 
 import com.epam.jmp.taskmanager.model.User;
 
-public class UserHibernateDAO extends HibernateDAO<User>{
+@Scope("singleton")
+public class UserHibernateDAO extends AbstractHibernateDAO<User>{
 
 	public static final Logger LOG = Logger.getLogger(UserHibernateDAO.class);
 

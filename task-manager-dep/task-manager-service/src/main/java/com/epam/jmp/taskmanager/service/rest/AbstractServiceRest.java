@@ -22,11 +22,11 @@ import com.epam.jmp.taskmanager.exception.ServiceRestException;
 import com.epam.jmp.taskmanager.exception.TechnicalDAOException;
 import com.epam.jmp.taskmanager.service.IService;
 
-public class ServiceRest<T> implements IService<T>{
+public abstract class AbstractServiceRest<T> implements IService<T>{
 
-	public DAOImpl<T> dao = null;
+	private DAOImpl<T> dao = null;
 	
-	public static final Logger LOG = Logger.getLogger(ServiceRest.class);
+	public static final Logger LOG = Logger.getLogger(AbstractServiceRest.class);
 	
 	public void init () {
 		
