@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+	<definition name="base.definition" template="/WEB-INF/views/layout.jsp">
+		<put-attribute name="title" value="task manager"></put-attribute>
+		<put-attribute name="header" value="/WEB-INF/views/header.jsp"></put-attribute>
+		<put-attribute name="body" value=""></put-attribute>
+		<put-attribute name="footer" value="/WEB-INF/views/footer.jsp"></put-attribute>
+		<!--put-attribute name="scriptjs" value="/WEB-INF/views/firstscriptjs.jsp"></put-attribute-->
+		<!-- put-attribute name="stylecss" value="/WEB-INF/views/firststylecss.jsp"></put-attribute-->
+		<put-list-attribute name="stylesheets">
+			<add-attribute value="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+		</put-list-attribute>
+		<put-list-attribute name="javascripts">
+			<add-attribute value="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" />
+		</put-list-attribute>
+	</definition>
+	
+	<definition name="task.list" extends="base.definition">
+		<put-attribute name="title" value="task list"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/task/taskList.jsp"></put-attribute>
+	</definition>
+
+	<definition name="task.item.edit" extends="base.definition">
+		<put-attribute name="title" value="task item edit"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/task/taskItemEdit.jsp"></put-attribute>
+	</definition>
+
+	<definition name="task.item.view" extends="base.definition">
+		<put-attribute name="title" value="task item edit"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/task/taskItemView.jsp"></put-attribute>
+	</definition>
+	
+</tiles-definitions>
