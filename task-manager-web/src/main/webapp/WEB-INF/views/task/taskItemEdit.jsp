@@ -3,7 +3,7 @@
 <div style="margin-top: 50px;">
 	<div class="container">
 		<spring:url value="/task/update" var="urlTaskUpdate"/>
-		<form:form method="POST" action="task-manager-web/task/update" modelAttribute="task">
+		<form:form method="POST" action="${urlTaskUpdate}" modelAttribute="task">
              <table class="table">
              <caption>Task form</caption>
                 <tr>
@@ -19,7 +19,11 @@
                     <td><form:input path="description"/></td>
                 </tr>
                 <tr>
-                    <td rowspan="2"><input type="submit" value="Submit" class="btn btn-default"/></td>
+                    <td>
+                    	<spring:url value="/task/list" var="urlTaskList"/>
+						<a href="${urlTaskList}" class="btn btn-default">Task list</a>
+					</td>
+                    <td><input type="submit" value="Submit" class="btn btn-default"/></td>
                 </tr>
             </table>
         </form:form>

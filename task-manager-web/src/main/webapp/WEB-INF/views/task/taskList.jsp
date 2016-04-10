@@ -22,7 +22,12 @@
 							<button class="btn btn-default">delete</button>
 						</form:form>
 					</td>
-					<td>Edit</td>
+					<td>
+						<spring:url value="/task/${task.id}/edit" var="urlTaskEdit"/>
+						<form:form method="GET" action="${urlTaskEdit}">
+							<button class="btn btn-default">edit</button>
+						</form:form>
+					</td>
 				</tr>
 			</c:forEach>
 		</table>

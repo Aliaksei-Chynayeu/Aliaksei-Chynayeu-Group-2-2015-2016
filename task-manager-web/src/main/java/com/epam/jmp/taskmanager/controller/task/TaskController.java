@@ -41,12 +41,16 @@ public class TaskController{
 		System.out.println("----------CREATE TASK ");
 		return new ModelAndView("task.item.edit" , "task" , new Task());
     }
+	@RequestMapping(value="/{id}/edit", method = RequestMethod.GET)
+	public ModelAndView create(@PathVariable("id") Long id) {
+		Task task = new Task();
+		task.setId(id);
+		return new ModelAndView("task.item.edit" , "task" , task);
+	}
 
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
 	public String submit(@ModelAttribute("task") Task task, BindingResult result, ModelMap model) {
-		model.addAttribute("id", task.getId());
-		model.addAttribute("name", task.getName());
-		model.addAttribute("contactNumber", task.getDescription());
+		model.addAttribute("task", task);
 		System.out.println("-------- TASK WAS CREATED : " + task);
 		return "task.item.view";
 	}

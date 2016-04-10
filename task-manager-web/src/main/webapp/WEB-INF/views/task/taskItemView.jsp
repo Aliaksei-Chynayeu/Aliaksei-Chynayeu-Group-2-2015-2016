@@ -3,12 +3,11 @@
 <div style="margin-top: 50px;">
 	<div class="container">
 		<spring:url value="/task/update" var="urlTaskUpdate"/>
-		<form:form method="POST" action="task-manager-web/task/update" modelAttribute="task">
              <table class="table">
              <caption>Task View</caption>
                 <tr>
                     <th>Id</th>
-                    <td>{task.id}</td>
+                    <td>${task.id}</td>
                 </tr>
                 <tr>
                     <th>Name</th>
@@ -16,12 +15,20 @@
                 </tr>
                 <tr>
                     <th>Descriptionr</th>
-                    <td>{task.description}</td>
+                    <td>${task.description}</td>
                 </tr>
                 <tr>
-                    <td rowspan="2"><input type="submit" value="Submit" class="btn btn-default"/></td>
+                    <td>						
+                    	<spring:url value="/task" var="urlTaskDelete"/>
+						<form:form method="DELETE" action="${urlTaskDelete}/${task.id}">
+							<button class="btn btn-default">delete</button>
+						</form:form>
+					</td>
+                    <td>
+                    	<spring:url value="/task/list" var="urlTaskList"/>
+						<a href="${urlTaskList}" class="btn btn-default">Ok</a>
+					</td>
                 </tr>
             </table>
-        </form:form>
 	</div>
 </div>
